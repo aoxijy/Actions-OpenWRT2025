@@ -4,7 +4,7 @@
 
 ## 📦 固件下载
 
-[![GitHub release (latest by date)](https://img.shields.io/github/v/release/xcz-ns/OpenWrt-AutoBuild?style=for-the-badge&label=固件更新下载)](https://github.com/xcz-ns/OpenWrt-AutoBuild/releases)
+[![GitHub release (latest by date)](https://img.shields.io/github/v/release/xcz-ns/OpenWrt-Build?style=for-the-badge&label=固件更新下载)](https://github.com/xcz-ns/OpenWrt-Build/releases)
 
 ## 📚 项目说明
 
