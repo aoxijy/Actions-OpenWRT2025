@@ -8,6 +8,7 @@
 # sed -i 's@#src-git helloworld@src-git helloworld@g' feeds.conf.default # 启用helloworld
 # sed -i 's@src-git luci@# src-git luci@g' feeds.conf.default # 禁用18.06Luci
 # sed -i 's@## src-git luci@src-git luci@g' feeds.conf.default # 启用23.05Luci
+sed -i 's@;openwrt-23.05@;openwrt-24.10@g' feeds.conf.default # 启用24.10Luci
 cat feeds.conf.default
 
 # 添加第三方软件包
@@ -25,8 +26,8 @@ git clone https://github.com/afala2020/luci-app-filebrowser package/filebrowser
 rm -rf feeds/luci/applications/luci-app-qbittorrent
 rm -rf feeds/luci/applications/luci-app-openclash
 rm -rf feeds/luci/themes/luci-theme-argon
-# rm -rf package/dbone-packages/luci-theme-design
-rm -rf feeds/luci/themes/luci-theme-design
+rm -rf package/dbone-packages/luci-theme-design
+# rm -rf feeds/luci/themes/luci-theme-design
 
 # 自定义定制选项
 NET="package/base-files/luci2/bin/config_generate"
@@ -371,7 +372,7 @@ EOF
 cat >> .config <<EOF
 CONFIG_PACKAGE_luci-theme-argon=y
 CONFIG_PACKAGE_luci-theme-edge=y
-# CONFIG_PACKAGE_luci-theme-design=y
+CONFIG_PACKAGE_luci-theme-design=y
 EOF
 
 # 常用软件包:
