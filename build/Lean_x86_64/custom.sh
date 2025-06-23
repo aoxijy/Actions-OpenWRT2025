@@ -19,7 +19,7 @@ git clone https://github.com/afala2020/luci-app-filebrowser package/filebrowser
 
 # 更新并安装源
 ./scripts/feeds clean
-./scripts/feeds update -a && ./scripts/feeds install -a -f
+./scripts/feeds update -a && ./scripts/feeds install -a -f && ./scripts/feeds install -a
 
 # 删除部分默认包
 rm -rf feeds/luci/applications/luci-app-qbittorrent
