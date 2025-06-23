@@ -21,10 +21,10 @@
 ## 🔧 集成源码
 
 - **固件基础源码**  
-  [Lean's OpenWrt](https://github.com/coolsnowwolf/lede) ｜ [ImmortalWrt](https://github.com/immortalwrt/immortalwrt)
+  [lede](https://github.com/coolsnowwolf/lede) ｜ [ImmortalWrt](https://github.com/immortalwrt/immortalwrt)
 
 - **核心插件与功能包**  
-  [xiaorouji's Passwall](https://github.com/xiaorouji/openwrt-passwall) ｜ [281677160](https://github.com/281677160/openwrt-package)
+  [xiaorouji](https://github.com/xiaorouji/openwrt-passwall) ｜ [281677160](https://github.com/281677160/openwrt-package)
 
 - **自动化脚本与流程**  
-  [P3TERX Actions-OpenWrt](https://github.com/P3TERX/Actions-OpenWrt) ｜ [db-one OpenWrt-AutoBuild](https://github.com/db-one/OpenWrt-AutoBuild)
+  [P3TERX](https://github.com/P3TERX/Actions-OpenWrt) ｜ [db-one](https://github.com/db-one/OpenWrt-AutoBuild)
