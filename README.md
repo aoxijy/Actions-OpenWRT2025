@@ -2,7 +2,9 @@
 
 基于 **Lean、ImmortalWrt** 等主流分支构建的 **自动化固件编译方案**，通过 GitHub Actions 实现全流程云端构建，聚焦高效、可持续的 OpenWrt 自动编译实践。
 
-<p align="center">   <a href="https://github.com/xcz-ns/OpenWrt-Build/actions">     <img src="https://img.shields.io/github/actions/workflow/status/xcz-ns/OpenWrt-Build/build.yml?label=构建状态&style=for-the-badge&logo=github-actions" alt="Build Status">   </a>   <a href="https://github.com/xcz-ns/OpenWrt-Build/releases">     <img src="https://img.shields.io/github/v/release/xcz-ns/OpenWrt-Build?style=for-the-badge&label=固件下载&logo=github" alt="Release">   </a> </p>
+[![构建状态](https://img.shields.io/github/actions/workflow/status/xcz-ns/OpenWrt-Build/build.yml?label=构建状态&style=for-the-badge&logo=github-actions)](https://github.com/xcz-ns/OpenWrt-Build/actions)
+
+[![固件下载](https://img.shields.io/github/v/release/xcz-ns/OpenWrt-Build?style=for-the-badge&label=固件下载&logo=github)](https://github.com/xcz-ns/OpenWrt-Build/releases)
 
 ## 📦 固件下载
 
