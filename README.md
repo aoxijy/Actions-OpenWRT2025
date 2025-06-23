@@ -11,18 +11,18 @@
 - [P3TERX](https://github.com/P3TERX/Actions-OpenWrt)
 - [281677160](https://github.com/281677160/openwrt-package)
 - [db-one](https://github.com/db-one/OpenWrt-AutoBuild)
----
+
 ## 🛠 项目特性
 
 - ✅ 多平台、多分支构建支持（Lean、ImmortalWrt 等）
 - ☁️ GitHub Actions 云端编译，**本地零负担**
 - 📦 构建结果自动发布，可对接 Telegram 通知/机器人
 - ⚙️ 支持灵活定制构建流程与配置（缓存、插件、配置文件等）
----
+
 ## 🛠 编译状态
 
 [![构建状态](https://img.shields.io/github/actions/workflow/status/xcz-ns/OpenWrt-Build/OpenWrt-Actions.yml?label=构建状态&style=for-the-badge&logo=github-actions)](https://github.com/xcz-ns/OpenWrt-Build/actions)
----
+
 ## 📦 固件下载
 
 [![固件下载](https://img.shields.io/github/v/release/xcz-ns/OpenWrt-Build?style=for-the-badge&label=固件下载&logo=github)](https://github.com/xcz-ns/OpenWrt-Build/releases)
