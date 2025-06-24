@@ -371,6 +371,7 @@ EOF
 # LuCI主题:
 cat >> .config <<EOF
 CONFIG_PACKAGE_luci-theme-argon=n
+CONFIG_PACKAGE_luci-app-argon-config=n
 CONFIG_PACKAGE_luci-theme-edge=y
 CONFIG_PACKAGE_luci-theme-design=y
 EOF
