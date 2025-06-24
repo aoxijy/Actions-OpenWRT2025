@@ -233,7 +233,6 @@ jobs:
         echo "写入配置文件..."
         mv ${WORKPATH}/$CONFIG_FILE .config
         make defconfig
-        # sed -i 's/^CONFIG_PACKAGE_luci-theme-argon=y$/CONFIG_PACKAGE_luci-theme-argon=n/' .config
 
     - name: 创建 .ssh 目录
       if: env.SSH_ACTIONS == 'true' || (github.event.inputs.SSH_ACTION == 'true')
