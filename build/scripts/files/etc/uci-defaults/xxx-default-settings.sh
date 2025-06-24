@@ -19,7 +19,7 @@ cp -rf /rom/etc/openclash/core/* /etc/openclash/core
 # uci set system.@system[0].hostname='OpenWrt-86'
 
 # 设置默认主题
-uci set luci.main.mediaurlbase='/luci-static/argon' && uci commit luci
+uci set luci.main.mediaurlbase='/luci-static/design' && uci commit luci
 
 # 此文件名注意ls 排序，下面也行
 # sed -ri "/option mediaurlbase/s#(/luci-static/)[^']+#\argon#" /etc/config/luci
