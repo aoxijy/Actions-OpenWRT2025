@@ -21,7 +21,6 @@ cat feeds.conf.default
 git clone https://github.com/db-one/dbone-packages.git -b 23.05 package/dbone-packages
 git clone https://github.com/gdy666/luci-app-lucky.git package/lucky
 git clone https://github.com/afala2020/luci-app-filebrowser package/filebrowser
-# git clone https://github.com/0x676e67/luci-theme-design package/luci-theme-design
 
 # 更新并安装源
 ./scripts/feeds clean
@@ -32,7 +31,7 @@ rm -rf feeds/luci/applications/luci-app-qbittorrent
 rm -rf feeds/luci/applications/luci-app-openclash
 rm -rf feeds/luci/themes/luci-theme-design
 rm -rf feeds/luci/themes/luci-theme-argon
-# rm -rf package/dbone-packages/luci-theme-design
+rm -rf package/dbone-packages/luci-theme-design
 
 # 自定义定制选项
 NET="package/base-files/luci2/bin/config_generate"
@@ -273,7 +272,6 @@ cat >> .config <<EOF
 CONFIG_PACKAGE_luci-app-poweroff=y #关机（增加关机功能）
 CONFIG_PACKAGE_luci-app-openclash=y #OpenClash客户端
 CONFIG_PACKAGE_luci-app-argon-config=y #argon主题设置
-CONFIG_PACKAGE_luci-app-design-config=n #design主题设置
 #
 CONFIG_PACKAGE_luci-app-oaf=n #应用过滤
 CONFIG_PACKAGE_luci-app-nikki=n #nikki 客户端
@@ -378,7 +376,6 @@ EOF
 cat >> .config <<EOF
 CONFIG_PACKAGE_luci-theme-argon=y
 CONFIG_PACKAGE_luci-theme-edge=y
-CONFIG_PACKAGE_luci-theme-design=n
 EOF
 
 # 常用软件包:
