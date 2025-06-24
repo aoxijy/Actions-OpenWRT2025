@@ -266,9 +266,9 @@ CONFIG_PACKAGE_kmod-fs-squashfs=y
 # 第三方插件选择:
 cat >> .config <<EOF
 CONFIG_PACKAGE_luci-app-poweroff=y #关机（增加关机功能）
-CONFIG_PACKAGE_luci-app-argon-config=y #argon主题设置
 CONFIG_PACKAGE_luci-app-openclash=y #OpenClash客户端
 #
+CONFIG_PACKAGE_luci-app-argon-config=n #argon主题设置
 CONFIG_PACKAGE_luci-app-oaf=n #应用过滤
 CONFIG_PACKAGE_luci-app-nikki=n #nikki 客户端
 CONFIG_PACKAGE_luci-app-serverchan=n #微信推送
@@ -371,7 +371,6 @@ EOF
 # LuCI主题:
 cat >> .config <<EOF
 CONFIG_PACKAGE_luci-theme-argon=n
-CONFIG_PACKAGE_luci-app-argon-config=n
 CONFIG_PACKAGE_luci-theme-edge=y
 CONFIG_PACKAGE_luci-theme-design=y
 EOF
