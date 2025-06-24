@@ -362,9 +362,9 @@ CONFIG_PACKAGE_luci-app-softethervpn=n #SoftEtherVPN服务器
 #
 # 文件共享相关(禁用):
 #
-CONFIG_PACKAGE_luci-app-samba4=n
-CONFIG_PACKAGE_samba4-server=n
-CONFIG_PACKAGE_samba4-libs=n
+CONFIG_PACKAGE_luci-app-samba4=y
+CONFIG_PACKAGE_samba4-server=y
+CONFIG_PACKAGE_samba4-libs=y
 #
 CONFIG_PACKAGE_luci-app-minidlna=n #miniDLNA服务
 CONFIG_PACKAGE_luci-app-vsftpd=n #FTP 服务器
