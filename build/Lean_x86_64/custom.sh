@@ -22,6 +22,7 @@ git clone https://github.com/db-one/dbone-packages.git -b 23.05 package/dbone-pa
 git clone https://github.com/gdy666/luci-app-lucky.git package/lucky
 git clone https://github.com/afala2020/luci-app-filebrowser package/filebrowser
 git clone https://github.com/0x676e67/luci-theme-design package/luci-theme-design
+git clone -b 18.06 https://github.com/jerrykuku/luci-theme-argon package/luci-theme-argon
 
 # 更新并安装源
 ./scripts/feeds clean
@@ -33,6 +34,7 @@ rm -rf feeds/luci/applications/luci-app-openclash
 rm -rf feeds/luci/themes/luci-theme-design
 rm -rf feeds/luci/themes/luci-theme-argon
 rm -rf package/dbone-packages/luci-theme-design
+rm -rf package/dbone-packages/luci-theme-argon
 
 # 自定义定制选项
 NET="package/base-files/luci2/bin/config_generate"
@@ -376,7 +378,7 @@ EOF
 
 # LuCI主题:
 cat >> .config <<EOF
-CONFIG_PACKAGE_luci-theme-argon=n
+CONFIG_PACKAGE_luci-theme-argon=y
 CONFIG_PACKAGE_luci-theme-edge=y
 CONFIG_PACKAGE_luci-theme-design=y
 EOF
