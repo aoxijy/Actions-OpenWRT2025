@@ -18,7 +18,7 @@ cat feeds.conf.default
 
 # 添加第三方软件包
 # git clone https://github.com/ToDesk/luci-app-GoWebDav.git package/GoWebDav
-git clone https://github.com/db-one/dbone-packages.git -b 23.05 package/dbone-packages
+git clone -b 23.05 https://github.com/db-one/dbone-packages.git package/dbone-packages
 git clone https://github.com/gdy666/luci-app-lucky.git package/lucky
 git clone https://github.com/afala2020/luci-app-filebrowser package/filebrowser
 git clone https://github.com/0x676e67/luci-theme-design package/luci-theme-design
@@ -274,7 +274,7 @@ CONFIG_PACKAGE_kmod-fs-squashfs=y
 cat >> .config <<EOF
 CONFIG_PACKAGE_luci-app-poweroff=y #关机（增加关机功能）
 CONFIG_PACKAGE_luci-app-openclash=y #OpenClash客户端
-CONFIG_PACKAGE_luci-app-argon-config=n #argon主题设置
+CONFIG_PACKAGE_luci-app-argon-config=y #argon主题设置
 CONFIG_PACKAGE_luci-app-design-config=y #design主题设置
 #
 CONFIG_PACKAGE_luci-app-oaf=n #应用过滤
@@ -314,7 +314,6 @@ EOF
 
 # 常用LuCI插件:
 cat >> .config <<EOF
-CONFIG_PACKAGE_luci-app-accesscontrol=n
 CONFIG_PACKAGE_luci-app-ddns=y #DDNS服务
 CONFIG_PACKAGE_luci-app-filetransfer=y #系统-文件传输
 CONFIG_PACKAGE_luci-app-wol=y #网络唤醒
@@ -325,8 +324,10 @@ CONFIG_PACKAGE_luci-proto-wireguard=y
 CONFIG_PACKAGE_luci-app-lucky=y #lucky
 CONFIG_PACKAGE_luci-app-uhttpd=y #uhttpd
 CONFIG_PACKAGE_luci-app-filebrowser=y #filebrowser
+CONFIG_PACKAGE_luci-app-gowebdav=y
 #
-CONFIG_PACKAGE_luci-app-gowebdav=n
+
+CONFIG_PACKAGE_luci-app-accesscontrol=n
 CONFIG_PACKAGE_luci-app-wrtbwmon=n #实时流量监测
 CONFIG_PACKAGE_luci-app-vlmcsd=n #KMS激活服务器
 CONFIG_PACKAGE_luci-app-arpbind=n #IP/MAC绑定
@@ -364,9 +365,9 @@ CONFIG_PACKAGE_luci-app-softethervpn=n #SoftEtherVPN服务器
 #
 # 文件共享相关(禁用):
 #
-CONFIG_PACKAGE_luci-app-samba4=n
-CONFIG_PACKAGE_samba4-server=n
-CONFIG_PACKAGE_samba4-libs=n
+CONFIG_PACKAGE_luci-app-samba4=y
+CONFIG_PACKAGE_samba4-server=y
+CONFIG_PACKAGE_samba4-libs=y
 #
 CONFIG_PACKAGE_luci-app-minidlna=n #miniDLNA服务
 CONFIG_PACKAGE_luci-app-vsftpd=n #FTP 服务器
@@ -379,8 +380,8 @@ EOF
 # LuCI主题:
 cat >> .config <<EOF
 CONFIG_PACKAGE_luci-theme-argon=y
-CONFIG_PACKAGE_luci-theme-edge=y
 CONFIG_PACKAGE_luci-theme-design=y
+CONFIG_PACKAGE_luci-theme-edge=n
 EOF
 
 # 常用软件包:
