@@ -8,24 +8,29 @@
 # sed -i 's@#src-git helloworld@src-git helloworld@g' feeds.conf.default # 启用helloworld
 # sed -i 's@src-git luci@# src-git luci@g' feeds.conf.default # 禁用18.06Luci
 # sed -i 's@## src-git luci@src-git luci@g' feeds.conf.default # 启用23.05Luci
-sed -i 's@;openwrt-23.05@;openwrt-24.10@g' feeds.conf.default # 启用24.10Luci
+# sed -i 's@;openwrt-23.05@;openwrt-24.10@g' feeds.conf.default # 启用24.10Luci
+
+# 启用18.06Luci
+sed -i 's|^#src-git luci https://github.com/coolsnowwolf/luci$|src-git luci https://github.com/coolsnowwolf/luci|' feeds.conf.default
+sed -i 's|^src-git luci https://github.com/coolsnowwolf/luci.git;openwrt-23.05$|#src-git luci https://github.com/coolsnowwolf/luci.git;openwrt-23.05|' feeds.conf.default
+
 cat feeds.conf.default
 
 # 添加第三方软件包
-# git clone https://github.com/SAENE/luci-theme-design package/luci-theme-design
 # git clone https://github.com/ToDesk/luci-app-GoWebDav.git package/GoWebDav
 git clone https://github.com/db-one/dbone-packages.git -b 23.05 package/dbone-packages
 git clone https://github.com/gdy666/luci-app-lucky.git package/lucky
 git clone https://github.com/afala2020/luci-app-filebrowser package/filebrowser
+git clone https://github.com/0x676e67/luci-theme-design package/luci-theme-design
 
 # 更新并安装源
 ./scripts/feeds clean
 ./scripts/feeds update -a && ./scripts/feeds install -a -f && ./scripts/feeds install -a
 
 # 删除部分默认包
-# rm -rf feeds/luci/themes/luci-theme-design
 rm -rf feeds/luci/applications/luci-app-qbittorrent
 rm -rf feeds/luci/applications/luci-app-openclash
+rm -rf feeds/luci/themes/luci-theme-design
 rm -rf feeds/luci/themes/luci-theme-argon
 rm -rf package/dbone-packages/luci-theme-design
 
@@ -267,7 +272,8 @@ CONFIG_PACKAGE_kmod-fs-squashfs=y
 cat >> .config <<EOF
 CONFIG_PACKAGE_luci-app-poweroff=y #关机（增加关机功能）
 CONFIG_PACKAGE_luci-app-openclash=y #OpenClash客户端
-CONFIG_PACKAGE_luci-app-argon-config=y #argon主题设置
+CONFIG_PACKAGE_luci-app-argon-config=n #argon主题设置
+CONFIG_PACKAGE_luci-app-design-config=y #design主题设置
 #
 CONFIG_PACKAGE_luci-app-oaf=n #应用过滤
 CONFIG_PACKAGE_luci-app-nikki=n #nikki 客户端
@@ -370,9 +376,9 @@ EOF
 
 # LuCI主题:
 cat >> .config <<EOF
-CONFIG_PACKAGE_luci-theme-argon=y
+CONFIG_PACKAGE_luci-theme-argon=n
 CONFIG_PACKAGE_luci-theme-edge=y
-CONFIG_PACKAGE_luci-theme-design=n
+CONFIG_PACKAGE_luci-theme-design=y
 EOF
 
 # 常用软件包:
