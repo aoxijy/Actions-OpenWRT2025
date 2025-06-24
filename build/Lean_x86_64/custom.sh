@@ -383,7 +383,8 @@ EOF
 
 # 常用软件包:
 cat >> .config <<EOF
-CONFIG_PACKAGE_firewall4=y
+CONFIG_PACKAGE_firewall4=n # 适配18.04，关闭firewall4
+CONFIG_PACKAGE_firewall=y
 CONFIG_PACKAGE_curl=y
 CONFIG_PACKAGE_htop=y
 CONFIG_PACKAGE_nano=y
