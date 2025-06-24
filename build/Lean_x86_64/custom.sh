@@ -12,22 +12,22 @@ sed -i 's@;openwrt-23.05@;openwrt-24.10@g' feeds.conf.default # 启用24.10Luci
 cat feeds.conf.default
 
 # 添加第三方软件包
+# git clone https://github.com/SAENE/luci-theme-design package/luci-theme-design
+# git clone https://github.com/ToDesk/luci-app-GoWebDav.git package/GoWebDav
 git clone https://github.com/db-one/dbone-packages.git -b 23.05 package/dbone-packages
 git clone https://github.com/gdy666/luci-app-lucky.git package/lucky
-# git clone https://github.com/ToDesk/luci-app-GoWebDav.git package/GoWebDav
 git clone https://github.com/afala2020/luci-app-filebrowser package/filebrowser
-# git clone https://github.com/SAENE/luci-theme-design package/luci-theme-design
 
 # 更新并安装源
 ./scripts/feeds clean
 ./scripts/feeds update -a && ./scripts/feeds install -a -f && ./scripts/feeds install -a
 
 # 删除部分默认包
+# rm -rf feeds/luci/themes/luci-theme-design
 rm -rf feeds/luci/applications/luci-app-qbittorrent
 rm -rf feeds/luci/applications/luci-app-openclash
 rm -rf feeds/luci/themes/luci-theme-argon
 rm -rf package/dbone-packages/luci-theme-design
-# rm -rf feeds/luci/themes/luci-theme-design
 
 # 自定义定制选项
 NET="package/base-files/luci2/bin/config_generate"
@@ -47,7 +47,7 @@ sed -i 's#192.168.1.1#192.168.11.41#g' $NET                                     
 # sed -i 's#LEDE#OpenWrt-X86#g' $NET                                                     # 修改默认名称为OpenWrt-X86
 # sed -i 's@.*CYXluq4wUazHjmCDBCqXF*@#&@g' $ZZZ                                             # 取消系统默认密码
 sed -i "s/LEDE /Built on $(TZ=UTC-8 date "+%Y.%m.%d") @ LEDE /g" $ZZZ              # 增加自己个性名称
-echo "uci set luci.main.mediaurlbase=/luci-static/design" >> $ZZZ                      # 设置默认主题(如果编译可会自动修改默认主题的，有可能会失效)
+echo "uci set luci.main.mediaurlbase=/luci-static/argon" >> $ZZZ                      # 设置默认主题(如果编译可会自动修改默认主题的，有可能会失效)
 
 # ●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●● #
 
@@ -267,8 +267,8 @@ CONFIG_PACKAGE_kmod-fs-squashfs=y
 cat >> .config <<EOF
 CONFIG_PACKAGE_luci-app-poweroff=y #关机（增加关机功能）
 CONFIG_PACKAGE_luci-app-openclash=y #OpenClash客户端
+CONFIG_PACKAGE_luci-app-argon-config=y #argon主题设置
 #
-CONFIG_PACKAGE_luci-app-argon-config=n #argon主题设置
 CONFIG_PACKAGE_luci-app-oaf=n #应用过滤
 CONFIG_PACKAGE_luci-app-nikki=n #nikki 客户端
 CONFIG_PACKAGE_luci-app-serverchan=n #微信推送
@@ -370,9 +370,9 @@ EOF
 
 # LuCI主题:
 cat >> .config <<EOF
-CONFIG_PACKAGE_luci-theme-argon=n
+CONFIG_PACKAGE_luci-theme-argon=y
 CONFIG_PACKAGE_luci-theme-edge=y
-CONFIG_PACKAGE_luci-theme-design=y
+CONFIG_PACKAGE_luci-theme-design=n
 EOF
 
 # 常用软件包:
