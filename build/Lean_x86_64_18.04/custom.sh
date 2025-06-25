@@ -17,7 +17,7 @@ sed -i 's|^src-git luci https://github.com/coolsnowwolf/luci.git;openwrt-23.05$|
 cat feeds.conf.default
 
 # 添加第三方软件包
-# git clone https://github.com/ToDesk/luci-app-GoWebDav.git package/GoWebDav
+git clone https://github.com/ToDesk/luci-app-GoWebDav.git package/GoWebDav
 git clone -b 23.05 https://github.com/db-one/dbone-packages.git package/dbone-packages
 git clone https://github.com/gdy666/luci-app-lucky.git package/lucky
 git clone https://github.com/0x676e67/luci-theme-design package/luci-theme-design
