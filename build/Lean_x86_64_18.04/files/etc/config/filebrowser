@@ -6,5 +6,5 @@ config global
 	option disable_exec '1'
 	option root_path '/'
 	option executable_directory '/usr/bin'
-	option enable '1'
+	option enable '0'
 
