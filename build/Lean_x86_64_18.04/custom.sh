@@ -335,7 +335,7 @@ CONFIG_PACKAGE_luci-app-diskman=y #磁盘管理磁盘信息
 CONFIG_PACKAGE_luci-app-ttyd=y #ttyd
 CONFIG_PACKAGE_luci-app-wireguard=y #wireguard端
 CONFIG_PACKAGE_luci-proto-wireguard=y
-CONFIG_PACKAGE_luci-app-store=n #store
+CONFIG_PACKAGE_luci-app-store=y #store
 CONFIG_PACKAGE_luci-app-uhttpd=y #uhttpd
 CONFIG_PACKAGE_luci-app-gowebdav=n
 #
