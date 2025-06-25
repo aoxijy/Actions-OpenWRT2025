@@ -17,12 +17,7 @@ sed -i 's|^src-git luci https://github.com/coolsnowwolf/luci.git;openwrt-23.05$|
 cat feeds.conf.default
 
 # 添加第三方软件包
-git clone https://github.com/ToDesk/luci-app-GoWebDav.git package/luci-app-gowebdav
-git clone -b 23.05 https://github.com/db-one/dbone-packages.git package/dbone-packages
-git clone https://github.com/gdy666/luci-app-lucky.git package/luci-app-lucky
-git clone https://github.com/0x676e67/luci-theme-design package/luci-theme-design
-git clone -b 18.06 https://github.com/jerrykuku/luci-theme-argon package/luci-theme-argon
-git clone -b 18.06 https://github.com/xiaozhuai/luci-app-filebrowser package/luci-app-filebrowser
+git clone https://github.com/xcz-ns/OpenWrt-Packages package/OpenWrt-Packages
 
 # 更新并安装源
 ./scripts/feeds clean
@@ -33,8 +28,6 @@ rm -rf feeds/luci/applications/luci-app-qbittorrent
 rm -rf feeds/luci/applications/luci-app-openclash
 rm -rf feeds/luci/themes/luci-theme-design
 rm -rf feeds/luci/themes/luci-theme-argon
-rm -rf package/dbone-packages/luci-theme-design
-rm -rf package/dbone-packages/luci-theme-argon
 
 # 自定义定制选项
 NET="package/base-files/luci2/bin/config_generate"
@@ -324,7 +317,7 @@ CONFIG_PACKAGE_luci-app-wireguard=y #wireguard端
 CONFIG_PACKAGE_luci-proto-wireguard=y
 CONFIG_PACKAGE_luci-app-lucky=y #lucky
 CONFIG_PACKAGE_luci-app-uhttpd=y #uhttpd
-CONFIG_PACKAGE_luci-app-gowebdav=y
+CONFIG_PACKAGE_luci-app-gowebdav=n
 #
 
 CONFIG_PACKAGE_luci-app-accesscontrol=n
