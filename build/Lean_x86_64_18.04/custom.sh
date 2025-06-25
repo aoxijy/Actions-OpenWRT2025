@@ -37,10 +37,15 @@ echo "✅ feeds 更新与安装完成"
 # 删除部分默认包
 echo "🧹 删除部分默认包"
 rm -rf feeds/luci/applications/luci-app-qbittorrent
+rm -rf package/feeds/luci/luci-app-qbittorrent
+
 rm -rf feeds/luci/applications/luci-app-openclash
+rm -rf package/feeds/luci/luci-app-openclash
+
 rm -rf feeds/luci/themes/luci-theme-design
-rm -rf feeds/luci/themes/luci-theme-argon
 rm -rf package/feeds/luci/luci-theme-design
+
+rm -rf feeds/luci/themes/luci-theme-argon
 rm -rf package/feeds/luci/luci-theme-argon
 echo "✅ 默认包删除完成"
 
