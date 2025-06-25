@@ -40,6 +40,8 @@ rm -rf feeds/luci/applications/luci-app-qbittorrent
 rm -rf feeds/luci/applications/luci-app-openclash
 rm -rf feeds/luci/themes/luci-theme-design
 rm -rf feeds/luci/themes/luci-theme-argon
+rm -rf package/feeds/luci/luci-theme-design
+rm -rf package/feeds/luci/luci-theme-argon
 echo "✅ 默认包删除完成"
 
 # 自定义定制选项
