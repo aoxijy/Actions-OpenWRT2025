@@ -335,11 +335,11 @@ CONFIG_PACKAGE_luci-app-diskman=y #磁盘管理磁盘信息
 CONFIG_PACKAGE_luci-app-ttyd=y #ttyd
 CONFIG_PACKAGE_luci-app-wireguard=y #wireguard端
 CONFIG_PACKAGE_luci-proto-wireguard=y
-CONFIG_PACKAGE_luci-app-lucky=y #lucky
+CONFIG_PACKAGE_luci-app-store=n #store
 CONFIG_PACKAGE_luci-app-uhttpd=y #uhttpd
 CONFIG_PACKAGE_luci-app-gowebdav=n
 #
-
+CONFIG_PACKAGE_luci-app-lucky=n #lucky
 CONFIG_PACKAGE_luci-app-accesscontrol=n
 CONFIG_PACKAGE_luci-app-wrtbwmon=n #实时流量监测
 CONFIG_PACKAGE_luci-app-vlmcsd=n #KMS激活服务器
