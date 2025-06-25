@@ -13,21 +13,34 @@
 # 启用18.06Luci
 sed -i 's|^#src-git luci https://github.com/coolsnowwolf/luci$|src-git luci https://github.com/coolsnowwolf/luci|' feeds.conf.default
 sed -i 's|^src-git luci https://github.com/coolsnowwolf/luci.git;openwrt-23.05$|#src-git luci https://github.com/coolsnowwolf/luci.git;openwrt-23.05|' feeds.conf.default
+echo "✅ Luci 源已切换为 18.06"
 
+echo "📄 当前 feeds.conf.default 内容如下："
 cat feeds.conf.default
 
 # 添加第三方软件包
+echo "📦 正在克隆第三方软件包"
 git clone https://github.com/xcz-ns/OpenWrt-Packages package/OpenWrt-Packages
+echo "✅ 第三方软件包克隆完成"
 
 # 更新并安装源
+echo "🔄 清理旧 feeds..."
 ./scripts/feeds clean
-./scripts/feeds update -a && ./scripts/feeds install -a -f && ./scripts/feeds install -a
+echo "🔄 更新所有 feeds..."
+./scripts/feeds update -a
+echo "📥 安装所有 feeds（强制覆盖冲突项）..."
+./scripts/feeds install -a -f
+echo "📥 再次安装所有 feeds（确保完整）..."
+./scripts/feeds install -a -f
+echo "✅ feeds 更新与安装完成"
 
 # 删除部分默认包
+echo "🧹 删除部分默认包"
 rm -rf feeds/luci/applications/luci-app-qbittorrent
 rm -rf feeds/luci/applications/luci-app-openclash
 rm -rf feeds/luci/themes/luci-theme-design
 rm -rf feeds/luci/themes/luci-theme-argon
+echo "✅ 默认包删除完成"
 
 # 自定义定制选项
 NET="package/base-files/luci2/bin/config_generate"
