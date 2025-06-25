@@ -17,21 +17,35 @@ sed -i 's@;openwrt-23.05@;openwrt-24.10@g' feeds.conf.default # 启用24.10Luci
 cat feeds.conf.default
 
 # 添加第三方软件包
-# git clone https://github.com/ToDesk/luci-app-GoWebDav.git package/GoWebDav
-git clone https://github.com/db-one/dbone-packages.git -b 23.05 package/dbone-packages
-git clone https://github.com/gdy666/luci-app-lucky.git package/luci-app-lucky
-git clone https://github.com/afala2020/luci-app-filebrowser package/luci-app-filebrowser
+echo "📦 正在克隆第三方软件包"
+git clone -b 24.10 https://github.com/xcz-ns/OpenWrt-Packages package/OpenWrt-Packages
+echo "✅ 第三方软件包克隆完成"
 
 # 更新并安装源
+echo "🔄 清理旧 feeds..."
 ./scripts/feeds clean
-./scripts/feeds update -a && ./scripts/feeds install -a -f && ./scripts/feeds install -a
+echo "🔄 更新所有 feeds..."
+./scripts/feeds update -a
+echo "📥 安装所有 feeds（强制覆盖冲突项）..."
+./scripts/feeds install -a -f
+echo "📥 再次安装所有 feeds（确保完整）..."
+./scripts/feeds install -a -f
+echo "✅ feeds 更新与安装完成"
 
 # 删除部分默认包
+echo "🧹 删除部分默认包"
 rm -rf feeds/luci/applications/luci-app-qbittorrent
+rm -rf package/feeds/luci/luci-app-qbittorrent
+
 rm -rf feeds/luci/applications/luci-app-openclash
+rm -rf package/feeds/luci/luci-app-openclash
+
 rm -rf feeds/luci/themes/luci-theme-design
+rm -rf package/feeds/luci/luci-theme-design
+
 rm -rf feeds/luci/themes/luci-theme-argon
-rm -rf package/dbone-packages/luci-theme-design
+rm -rf package/feeds/luci/luci-theme-argon
+echo "✅ 默认包删除完成"
 
 # 自定义定制选项
 NET="package/base-files/luci2/bin/config_generate"
@@ -248,7 +262,7 @@ EOF
 # CONFIG_PACKAGE_kmod-fs-nfs-v3=y
 # CONFIG_PACKAGE_kmod-fs-nfs-v4=y
 # CONFIG_PACKAGE_kmod-fs-ntfs=y
-CONFIG_PACKAGE_kmod-fs-squashfs=y
+# CONFIG_PACKAGE_kmod-fs-squashfs=y
 # EOF
 
 # USB3.0支持:
@@ -272,8 +286,8 @@ cat >> .config <<EOF
 CONFIG_PACKAGE_luci-app-poweroff=y #关机（增加关机功能）
 CONFIG_PACKAGE_luci-app-openclash=y #OpenClash客户端
 CONFIG_PACKAGE_luci-app-argon-config=y #argon主题设置
+CONFIG_PACKAGE_luci-app-oaf=y #应用过滤
 #
-CONFIG_PACKAGE_luci-app-oaf=n #应用过滤
 CONFIG_PACKAGE_luci-app-nikki=n #nikki 客户端
 CONFIG_PACKAGE_luci-app-serverchan=n #微信推送
 CONFIG_PACKAGE_luci-app-eqos=n #IP限速
@@ -312,6 +326,7 @@ EOF
 cat >> .config <<EOF
 CONFIG_PACKAGE_luci-app-accesscontrol=n
 CONFIG_PACKAGE_luci-app-ddns=y #DDNS服务
+CONFIG_PACKAGE_luci-app-store=y #DDNS服务
 CONFIG_PACKAGE_luci-app-filetransfer=y #系统-文件传输
 CONFIG_PACKAGE_luci-app-wol=y #网络唤醒
 CONFIG_PACKAGE_luci-app-diskman=y #磁盘管理磁盘信息
