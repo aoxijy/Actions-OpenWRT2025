@@ -20,9 +20,9 @@ cat feeds.conf.default
 # git clone https://github.com/ToDesk/luci-app-GoWebDav.git package/GoWebDav
 git clone -b 23.05 https://github.com/db-one/dbone-packages.git package/dbone-packages
 git clone https://github.com/gdy666/luci-app-lucky.git package/lucky
-git clone -b 18.06 https://github.com/xiaozhuai/luci-app-filebrowser package/filebrowser
 git clone https://github.com/0x676e67/luci-theme-design package/luci-theme-design
 git clone -b 18.06 https://github.com/jerrykuku/luci-theme-argon package/luci-theme-argon
+git clone -b 18.06 https://github.com/xiaozhuai/luci-app-filebrowser package/filebrowser
 
 # 更新并安装源
 ./scripts/feeds clean
