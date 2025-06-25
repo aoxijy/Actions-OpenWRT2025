@@ -1,0 +1,31 @@
+name: 清理 Workflows
+
+on:
+  workflow_dispatch:  # 手动触发
+    inputs:
+      keep_count:
+        description: '保留最近的 workflow runs 数量'
+        required: false
+        default: '10'
+
+  schedule:
+    - cron: '0 0 * * *'  # 每天 UTC 0 点触发（北京时间早上 8 点）
+
+jobs:
+  clean:
+    name: 清理 Workflows 任务
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: 检出仓库
+      uses: actions/checkout@v4
+
+    - name: 清理 Workflows
+      uses: danshui-git/delete-releases-workflows@main
+      with:
+        delete_releases: false
+        delete_workflows: true
+        workflows_keep_latest: ${{ github.event.inputs.keep_count || 10 }}  # 使用手动输入或默认值
+        max_workflows_fetch: 1000
+        repo: ${{ github.repository }}
+        gh_token: ${{ secrets.REPO_TOKEN }}
