@@ -15,9 +15,9 @@ on:
         required: true
         description: 选择需要编译的固件
         type: choice
-        default: Lean_x86_64
+        default: Lean_x86_64_18.04
         options:
-          - Lean_x86_64
+          - Lean_x86_64_18.04
           - Lean_x86_64_24.01
           - immortalwrt_x86_64
 
@@ -60,7 +60,7 @@ jobs:
       fail-fast: false
       matrix:
         target: ${{ fromJSON(
-          github.event_name == 'schedule' && '["Lean_x86_64","Lean_x86_64_24.01","immortalwrt_x86_64"]' ||
+          github.event_name == 'schedule' && '["Lean_x86_64_18.04","Lean_x86_64_24.01","immortalwrt_x86_64"]' ||
           format('["{0}"]', github.event.inputs.MODEL )
           )}}
 
