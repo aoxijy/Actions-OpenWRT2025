@@ -314,6 +314,7 @@ EOF
 
 # 常用LuCI插件:
 cat >> .config <<EOF
+CONFIG_PACKAGE_luci-app-filebrowser=y
 CONFIG_PACKAGE_luci-app-ddns=y #DDNS服务
 CONFIG_PACKAGE_luci-app-filetransfer=y #系统-文件传输
 CONFIG_PACKAGE_luci-app-wol=y #网络唤醒
@@ -323,7 +324,6 @@ CONFIG_PACKAGE_luci-app-wireguard=y #wireguard端
 CONFIG_PACKAGE_luci-proto-wireguard=y
 CONFIG_PACKAGE_luci-app-lucky=y #lucky
 CONFIG_PACKAGE_luci-app-uhttpd=y #uhttpd
-CONFIG_PACKAGE_luci-app-filebrowser=y #filebrowser
 CONFIG_PACKAGE_luci-app-gowebdav=y
 #
 
