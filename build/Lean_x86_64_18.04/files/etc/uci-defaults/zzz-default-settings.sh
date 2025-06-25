@@ -9,7 +9,4 @@ uci set network.lan.ipaddr='192.168.11.41'
 uci commit network
 /etc/init.d/network restart
 
-# design主题修改为跟随系统
-sed -i '/^\s*option mode/d' /etc/config/design && sed -i '${/^$/d;}' /etc/config/design && printf "\toption mode 'normal'\n" >> /etc/config/design
-
 exit 0
