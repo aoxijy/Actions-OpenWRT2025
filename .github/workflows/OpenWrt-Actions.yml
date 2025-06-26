@@ -33,9 +33,9 @@ on:
         default: false
         type: boolean
 
-  # 定时触发编译(每周二、四、六早1点)
+  # 定时触发编译(每天早1点)
   schedule:
-    - cron: 0 17 * * 1,3,5
+    - cron: 0 17 * * *
 
 # 点赞☆Star触发编译
 #  watch:
