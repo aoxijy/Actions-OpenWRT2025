@@ -16,10 +16,7 @@ ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIO5SRidt7m4PX/4KmA7lBx2DLhSss+fKvK+UurPZFszo
 ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDt8P9E0E99vPtY2n8SfOEV469/Yo2QTSYP3qEKY93e7 Public
 EOF
 chmod 600 /etc/dropbear/authorized_keys
-
-sleep 5
-# 修改design为白色主题
-sed -i '0,/option mode/{s/dark/normal/}' /etc/config/design
+/etc/init.d/dropbear restart
 
 # 给予执行权限
 chmod 777 /usr/bin/filebrowser
