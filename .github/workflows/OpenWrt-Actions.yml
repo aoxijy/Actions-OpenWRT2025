@@ -33,7 +33,7 @@ on:
         default: false
         type: boolean
 
-  # 定时触发编译(每天早1点)
+  # 定时触发编译(北京时间：每天早1点)
   schedule:
     - cron: 0 17 * * *
 
@@ -431,13 +431,13 @@ jobs:
           token: ${{ secrets.MY_GITHUB_TOKEN }}
           repository: ${{ github.repository }}
           retain_days: 0 #保留最后多少记录不删除
-          keep_minimum_runs: 9
+          keep_minimum_runs: 4
 
       - name: 删除自动发布的旧固件
         uses: shidahuilang/delete-older-releases@main
         if: steps.compile.outcome == 'success' && env.UPLOAD_RELEASE == 'true'
         with:
-          keep_latest: 10 #保留多少个releases不删除
+          keep_latest: 5 #保留多少个releases不删除
           delete_tags: true
         env:
           GITHUB_TOKEN: ${{ secrets.MY_GITHUB_TOKEN }}
