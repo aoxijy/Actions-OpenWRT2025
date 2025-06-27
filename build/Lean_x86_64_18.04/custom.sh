@@ -420,6 +420,7 @@ CONFIG_PACKAGE_vsftpd-alt=n
 CONFIG_PACKAGE_openssh-sftp-server=y
 CONFIG_PACKAGE_qemu-ga=y
 CONFIG_PACKAGE_autocore-x86=y
+CONFIG_PACKAGE_kmod-fuse=y
 EOF
 
 # 其他软件包:
