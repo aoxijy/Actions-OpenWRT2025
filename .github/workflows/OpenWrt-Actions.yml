@@ -98,17 +98,7 @@ jobs:
           sudo -E rm -rf /usr/share/dotnet /etc/mysql /etc/php /etc/apt/sources.list.d /usr/local/lib/android
           sudo -E apt-mark hold grub-efi-amd64-signed
           sudo -E apt update -y
-          # 安全清理不需要的软件包（只清除已安装的）
-          PACKAGES_TO_REMOVE=(
-            azure-cli docker ghc zulu firefox google-chrome-stable dotnet powershell
-            openjdk mysql php mongodb snapd mono-devel libgl1-mesa-dri
-          )
-          for pkg in "${PACKAGES_TO_REMOVE[@]}"; do
-            if dpkg -l | grep -q "^ii\s\+$pkg"; then
-              echo "Removing $pkg ..."
-              sudo apt -y purge "$pkg"
-            fi
-          done
+          sudo -E apt -y purge azure-cli* docker* ghc* zulu* llvm* firefox google* dotnet* powershell* openjdk* mysql* php* mongodb* dotnet* snap* > /dev/null 2>&1 || true
           sudo -E apt full-upgrade -y
           sudo -E apt install -y ack antlr3 asciidoc autoconf automake autopoint binutils bison build-essential \
                      bzip2 ccache clang cmake cpio curl device-tree-compiler ecj flex gawk gcc-multilib \
