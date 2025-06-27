@@ -98,7 +98,7 @@ jobs:
           sudo -E rm -rf /usr/share/dotnet /etc/mysql /etc/php /etc/apt/sources.list.d /usr/local/lib/android
           sudo -E apt-mark hold grub-efi-amd64-signed
           sudo -E apt update -y
-          # sudo -E apt -y purge azure-cli* docker* ghc* zulu* llvm* firefox google* dotnet* powershell* openjdk* mysql* php* mongodb* dotnet* snap* > /dev/null 2>&1 || true
+          sudo -E apt -y purge azure-cli* docker* ghc* zulu* llvm* firefox google* dotnet* powershell* openjdk* mysql* php* mongodb* dotnet* snap* || true
           sudo -E apt full-upgrade -y
           sudo -E apt install -y ack antlr3 asciidoc autoconf automake autopoint binutils bison build-essential \
                      bzip2 ccache clang cmake cpio curl device-tree-compiler ecj flex gawk gcc-multilib \
