@@ -273,17 +273,19 @@ CONFIG_PACKAGE_luci-app-diskman=y
 CONFIG_PACKAGE_luci-app-ttyd=y #ttyd
 CONFIG_PACKAGE_luci-app-wireguard=y
 CONFIG_PACKAGE_luci-proto-wireguard=y
+CONFIG_PACKAGE_luci-app-lucky=y
+CONFIG_PACKAGE_luci-app-uhttpd=y
+CONFIG_PACKAGE_luci-app-nlbwmon=y                   #宽带流量监控
+CONFIG_PACKAGE_luci-app-wrtbwmon=y                  #实时流量监测
 #
 CONFIG_PACKAGE_luci-app-design-config=n
 CONFIG_PACKAGE_luci-app-smartdns=n
 CONFIG_PACKAGE_luci-app-adguardhome=n
 CONFIG_PACKAGE_luci-app-ddnsto=n
 CONFIG_PACKAGE_ddnsto=n
-CONFIG_PACKAGE_luci-app-uhttpd=n
 CONFIG_PACKAGE_luci-app-gowebdav=n
 CONFIG_PACKAGE_luci-app-wol=n
 CONFIG_PACKAGE_luci-app-store=n
-CONFIG_PACKAGE_luci-app-lucky=n
 CONFIG_PACKAGE_luci-app-accesscontrol=n
 CONFIG_PACKAGE_luci-app-upnp=n
 CONFIG_PACKAGE_luci-app-dockerman=n
@@ -294,10 +296,8 @@ CONFIG_PACKAGE_luci-app-serverchan=n                #微信推送
 CONFIG_PACKAGE_luci-app-eqos=n                      #IP限速
 CONFIG_PACKAGE_luci-app-control-weburl=n            #网址过滤
 CONFIG_PACKAGE_luci-app-autotimeset=n               #定时重启系统，网络
-CONFIG_PACKAGE_luci-app-wrtbwmon=n                  #实时流量监测
 CONFIG_PACKAGE_luci-app-vlmcsd=n                    #KMS激活服务器
 CONFIG_PACKAGE_luci-app-arpbind=n                   #IP/MAC绑定
-CONFIG_PACKAGE_luci-app-nlbwmon=n                   #宽带流量监控
 CONFIG_PACKAGE_luci-app-sqm=n                       #SQM智能队列管理
 CONFIG_PACKAGE_luci-app-webadmin=n                  #Web管理页面设置
 CONFIG_PACKAGE_luci-app-autoreboot=n                #定时重启
@@ -342,7 +342,7 @@ EOF
 # LuCI主题:
 cat >> .config <<EOF
 CONFIG_PACKAGE_luci-theme-argon=y
-CONFIG_PACKAGE_luci-theme-design=n
+CONFIG_PACKAGE_luci-theme-design=y
 CONFIG_PACKAGE_luci-theme-edge=n
 EOF
 
