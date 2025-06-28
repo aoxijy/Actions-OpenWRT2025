@@ -65,9 +65,9 @@ fi
 echo ""
 
 #
-sed -i 's#192.168.1.1#192.168.3.1#g' $NET                                       # 定制默认IP
-sed -i "s/LEDE /Built on $(TZ=UTC-8 date "+%Y.%m.%d") @ LEDE /g" $ZZZ           # 增加自己个性名称
-echo "uci set luci.main.mediaurlbase=/luci-static/argon" >> $ZZZ                # 设置默认主题(如果编译可会自动修改默认主题的，有可能会失效)
+# sed -i 's#192.168.1.1#192.168.3.1#g' $NET                                       # 定制默认IP
+# sed -i "s/LEDE /Built on $(TZ=UTC-8 date "+%Y.%m.%d") @ LEDE /g" $ZZZ           # 增加自己个性名称
+# echo "uci set luci.main.mediaurlbase=/luci-static/argon" >> $ZZZ                # 设置默认主题(如果编译可会自动修改默认主题的，有可能会失效)
 echo ""
 
 # ●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●● #
