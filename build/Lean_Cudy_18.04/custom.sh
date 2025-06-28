@@ -223,13 +223,13 @@ EOF
 # EOF
 
 # USB3.0支持:
-# cat >> .config <<EOF
+cat >> .config <<EOF
 # CONFIG_PACKAGE_kmod-usb-ohci=y
 # CONFIG_PACKAGE_kmod-usb-ohci-pci=y
 # CONFIG_PACKAGE_kmod-usb2=y
 # CONFIG_PACKAGE_kmod-usb2-pci=y
 CONFIG_PACKAGE_kmod-usb3=y
-# EOF
+EOF
 
 # 多线多拨:
 # cat >> .config <<EOF
