@@ -5,9 +5,9 @@ uci set system.@system[0].hostname='QWRT'
 uci set luci.main.mediaurlbase='/luci-static/argon' && uci commit luci
 
 # 设置登录地址192.168.3.1
-uci set network.lan.ipaddr='192.168.3.1'
-uci commit network
-/etc/init.d/network restart
+# uci set network.lan.ipaddr='192.168.3.1'
+# uci commit network
+# /etc/init.d/network restart
 
 # 删除README
 rm -rf /README
