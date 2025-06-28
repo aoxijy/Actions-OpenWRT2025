@@ -1,0 +1,38 @@
+
+config wifi-device 'radio0'
+	option type 'mac80211'
+	option path 'platform/soc/18000000.wifi'
+	option band '2g'
+	option htmode 'HE20'
+	option legacy_rates '1'
+	option mu_beamformer '0'
+	option channel '1'
+	option country 'CN'
+
+config wifi-iface 'default_radio0'
+	option device 'radio0'
+	option network 'lan'
+	option mode 'ap'
+	option ssid 'Cudy_2.4G'
+	option encryption 'psk2'
+	option key 'oppo6688'
+
+config wifi-device 'radio1'
+	option type 'mac80211'
+	option path 'platform/soc/18000000.wifi+1'
+	option band '5g'
+	option htmode 'HE80'
+	option legacy_rates '1'
+	option mu_beamformer '0'
+	option country 'CN'
+	option disabled '0'
+	option channel '48'
+
+config wifi-iface
+	option device 'radio1'
+	option mode 'ap'
+	option network 'lan'
+	option ssid 'Cudy_5G'
+	option encryption 'psk2'
+	option key 'oppo6688'
+
