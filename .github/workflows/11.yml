@@ -24,9 +24,11 @@ jobs:
         run: |
           echo "匹配关键字: $FIRMWARE_MESSAGE"
 
-          # 配置 Git（删除 tag 时需要）
           git config --global user.name "github-actions"
           git config --global user.email "actions@github.com"
+
+          # 设置 Git 远程地址为带 Token 的形式，避免 403
+          git remote set-url origin https://${GITHUB_TOKEN}@github.com/${{ github.repository }}
 
           releases=$(gh api repos/${{ github.repository }}/releases --paginate)
 
