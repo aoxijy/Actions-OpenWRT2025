@@ -28,8 +28,13 @@ jobs:
           git config --global user.name "github-actions"
           git config --global user.email "actions@github.com"
 
+          # 清除 Git 凭据缓存，避免旧凭据干扰
+          git credential-cache exit || true
+
           # 设置 Git 远程地址为带 Token 的形式，避免 403
           git remote set-url origin https://${MY_GITHUB_TOKEN}@github.com/${{ github.repository }}
+
+          git remote -v  # 打印远程 URL 确认
 
           releases=$(gh api repos/${{ github.repository }}/releases --paginate)
 
