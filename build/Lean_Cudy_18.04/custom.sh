@@ -196,7 +196,7 @@ touch ./.config
 cat >> .config <<EOF
 CONFIG_TARGET_mediatek=y
 CONFIG_TARGET_mediatek_filogic=y
-CONFIG_TARGET_mediatek_filogic_DEVICE_cudy_tr3000-v1=y
+CONFIG_TARGET_mediatek_filogic_DEVICE_cudy_tr3000-mod=y
 EOF
 
 # 设置固件大小:
@@ -386,12 +386,12 @@ CONFIG_PACKAGE_vsftpd-alt=n
 CONFIG_PACKAGE_openssh-sftp-server=y
 CONFIG_PACKAGE_qemu-ga=y
 CONFIG_PACKAGE_autocore-x86=y
-CONFIG_PACKAGE_kmod-fuse=y
+# CONFIG_PACKAGE_kmod-fuse=y
 EOF
 
 # 其他软件包:
 cat >> .config <<EOF
-CONFIG_HAS_FPU=y
+# CONFIG_HAS_FPU=y
 EOF
 
 
