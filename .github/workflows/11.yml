@@ -24,7 +24,10 @@ jobs:
         run: |
           echo "匹配关键字: $FIRMWARE_MESSAGE"
 
-          # 获取所有 releases（含名称、描述、tag）
+          # 配置 Git（删除 tag 时需要）
+          git config --global user.name "github-actions"
+          git config --global user.email "actions@github.com"
+
           releases=$(gh api repos/${{ github.repository }}/releases --paginate)
 
           echo "$releases" | jq -c '.[]' | while read -r release; do
@@ -39,6 +42,6 @@ jobs:
             if [[ "$tag" == *"$FIRMWARE_MESSAGE"* || "$name" == *"$FIRMWARE_MESSAGE"* || "$body" == *"$FIRMWARE_MESSAGE"* ]]; then
               echo "🗑️ 删除 Release 和 Tag: $tag"
               gh release delete "$tag" --yes
-              gh tag delete "$tag"
+              git push origin ":refs/tags/$tag"
             fi
           done
