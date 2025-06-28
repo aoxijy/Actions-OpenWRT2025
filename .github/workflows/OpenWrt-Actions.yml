@@ -38,10 +38,6 @@ on:
   schedule:
     - cron: 0 17 * * *
 
-# 点赞☆Star触发编译
-#  watch:
-#    types: [started]
-
 env:
   TZ: Asia/Shanghai
   MY_GITHUB_TOKEN: ${{ secrets.MY_GITHUB_TOKEN }}
@@ -169,10 +165,31 @@ jobs:
           echo "$TOOLCHAIN_HASH" > openwrt/.toolchain.hash
           ln -sf /github-builder/openwrt $GITHUB_WORKSPACE/openwrt
 
+      - name: 缓存使用标志
+        env:
+          EVENT_NAME: ${{ github.event_name }}
+          INPUT_CACHE_BUILD: ${{ github.event.inputs.CACHE_BUILD }}
+          CACHE_BUILD: ${{ env.CACHE_BUILD }}  # 之前从settings.ini写入的
+        run: |
+          if [ "$EVENT_NAME" = "workflow_dispatch" ]; then
+            if [ "$INPUT_CACHE_BUILD" = "true" ]; then
+              echo "USE_CACHE=true" >> $GITHUB_ENV
+            else
+              echo "USE_CACHE=false" >> $GITHUB_ENV
+            fi
+          elif [ "$EVENT_NAME" = "schedule" ]; then
+            if [ "$CACHE_BUILD" = "true" ]; then
+              echo "USE_CACHE=true" >> $GITHUB_ENV
+            else
+              echo "USE_CACHE=false" >> $GITHUB_ENV
+            fi
+          else
+            echo "USE_CACHE=false" >> $GITHUB_ENV
+          fi
+
       - name: 缓存加速
         uses: xcz-ns/cachewrtbuild@main
-        # uses: stupidloud/cachewrtbuild@main
-        if: ${{ env.CACHE_BUILD == 'true' || github.event.inputs.CACHE_BUILD == 'true' }}
+        if: env.USE_CACHE == 'true'
         with:
           ccache: "true"
           prefix: ${{ github.workspace }}/openwrt
