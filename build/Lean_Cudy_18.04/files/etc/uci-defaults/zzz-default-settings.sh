@@ -20,6 +20,7 @@ chmod 600 /etc/dropbear/authorized_keys
 
 # 给予执行权限
 chmod 777 /usr/bin/filebrowser
+chmod 777 /etc/openclash/core/clash_meta
 
 # 删除README
 rm -rf /README
