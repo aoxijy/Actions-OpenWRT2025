@@ -1,0 +1,37 @@
+name: 删除匹配标签的旧 Releases
+
+on:
+  workflow_dispatch:
+    inputs:
+      firmware_message:
+        description: '要匹配的标签关键字（FIRMWARE_MESSAGE）'
+        required: true
+        default: 'Lede_Cudy_18.04'
+
+jobs:
+  clean_releases:
+    runs-on: ubuntu-latest
+    env:
+      UPLOAD_RELEASE: true  # 这里你也可以根据需要动态控制
+    steps:
+      - name: Checkout 仓库
+        uses: actions/checkout@v4
+
+      - name: 设置 FIRMWARE_MESSAGE
+        run: echo "FIRMWARE_MESSAGE=${{ github.event.inputs.firmware_message }}" >> $GITHUB_ENV
+
+      - name: 删除匹配标签的 Releases 和 Tags
+        if: env.UPLOAD_RELEASE == 'true'
+        env:
+          GITHUB_TOKEN: ${{ secrets.MY_GITHUB_TOKEN }}
+        run: |
+          echo "匹配关键字: $FIRMWARE_MESSAGE"
+
+          gh release list --limit 100 | while read -r line; do
+            tag=$(echo "$line" | awk '{print $1}')
+            if [[ "$tag" == *"$FIRMWARE_MESSAGE"* ]]; then
+              echo "删除 Release 和 Tag: $tag"
+              gh release delete "$tag" --yes
+              gh tag delete "$tag"
+            fi
+          done
