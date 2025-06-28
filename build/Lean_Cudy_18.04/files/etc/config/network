@@ -24,6 +24,7 @@ config interface 'lan'
 config interface 'wan'
 	option device 'eth0'
 	option proto 'dhcp'
+	option ifname 'eth0'
 
 config interface 'WireGuard'
 	option proto 'wireguard'
