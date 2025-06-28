@@ -169,7 +169,7 @@ jobs:
         env:
           EVENT_NAME: ${{ github.event_name }}
           INPUT_CACHE_BUILD: ${{ github.event.inputs.CACHE_BUILD }}
-          CACHE_BUILD: ${{ env.CACHE_BUILD }}  # 之前从settings.ini写入的
+          CACHE_BUILD: ${{ env.CACHE_BUILD }}
         run: |
           if [ "$EVENT_NAME" = "workflow_dispatch" ]; then
             if [ "$INPUT_CACHE_BUILD" = "true" ]; then
@@ -186,7 +186,6 @@ jobs:
           else
             echo "USE_CACHE=false" >> $GITHUB_ENV
           fi
-          echo "是否使用缓存: $USE_CACHE"
 
       - name: 缓存加速
         uses: xcz-ns/cachewrtbuild@main
