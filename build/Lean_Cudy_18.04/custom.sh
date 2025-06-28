@@ -264,6 +264,7 @@ EOF
 # 常用LuCI插件:
 cat >> .config <<EOF
 CONFIG_PACKAGE_luci-app-poweroff=y
+CONFIG_PACKAGE_luci-app-openclash=y
 CONFIG_PACKAGE_luci-app-argon-config=y
 CONFIG_PACKAGE_luci-app-filebrowser=y
 CONFIG_PACKAGE_luci-app-ddns=y
@@ -274,9 +275,7 @@ CONFIG_PACKAGE_luci-app-wireguard=y
 CONFIG_PACKAGE_luci-proto-wireguard=y
 CONFIG_PACKAGE_luci-app-uhttpd=y
 CONFIG_PACKAGE_luci-app-wrtbwmon=y                  #实时流量监测
-CONFIG_PACKAGE_luci-app-nikki=y                     #nikki 客户端
 #
-CONFIG_PACKAGE_luci-app-openclash=n
 CONFIG_PACKAGE_luci-app-design-config=n
 CONFIG_PACKAGE_luci-app-smartdns=n
 CONFIG_PACKAGE_luci-app-lucky=n
@@ -292,6 +291,7 @@ CONFIG_PACKAGE_luci-app-dockerman=n
 CONFIG_PACKAGE_luci-app-adbyby-plus=n
 CONFIG_PACKAGE_luci-app-nlbwmon=n                   #宽带流量监控
 CONFIG_PACKAGE_luci-app-oaf=n                       #应用过滤
+CONFIG_PACKAGE_luci-app-nikki=n                     #nikki 客户端
 CONFIG_PACKAGE_luci-app-serverchan=n                #微信推送
 CONFIG_PACKAGE_luci-app-eqos=n                      #IP限速
 CONFIG_PACKAGE_luci-app-control-weburl=n            #网址过滤
