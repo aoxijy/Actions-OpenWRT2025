@@ -1,36 +1,43 @@
-name: 删除匹配标签的旧 Releases
+name: 删除包含关键字的 Releases 和 Tags
 
 on:
   workflow_dispatch:
     inputs:
       firmware_message:
-        description: '要匹配的标签关键字（FIRMWARE_MESSAGE）'
+        description: '匹配关键字（用于匹配 tag、名称或描述）'
         required: true
         default: 'Lede_Cudy_18.04'
 
 jobs:
   clean_releases:
     runs-on: ubuntu-latest
-    env:
-      UPLOAD_RELEASE: true  # 这里你也可以根据需要动态控制
     steps:
       - name: Checkout 仓库
         uses: actions/checkout@v4
 
-      - name: 设置 FIRMWARE_MESSAGE
+      - name: 设置 FIRMWARE_MESSAGE 环境变量
         run: echo "FIRMWARE_MESSAGE=${{ github.event.inputs.firmware_message }}" >> $GITHUB_ENV
 
-      - name: 删除匹配标签的 Releases 和 Tags
-        if: env.UPLOAD_RELEASE == 'true'
+      - name: 删除匹配关键字的 Releases 和 Tags
         env:
           GITHUB_TOKEN: ${{ secrets.MY_GITHUB_TOKEN }}
         run: |
           echo "匹配关键字: $FIRMWARE_MESSAGE"
 
-          gh release list --limit 100 | while read -r line; do
-            tag=$(echo "$line" | awk '{print $1}')
-            if [[ "$tag" == *"$FIRMWARE_MESSAGE"* ]]; then
-              echo "删除 Release 和 Tag: $tag"
+          # 获取所有 releases（含名称、描述、tag）
+          releases=$(gh api repos/${{ github.repository }}/releases --paginate)
+
+          echo "$releases" | jq -c '.[]' | while read -r release; do
+            tag=$(echo "$release" | jq -r '.tag_name')
+            name=$(echo "$release" | jq -r '.name')
+            body=$(echo "$release" | jq -r '.body')
+
+            echo "检查 tag: $tag"
+            echo "       name: $name"
+            echo "       body: ${body:0:40}..."
+
+            if [[ "$tag" == *"$FIRMWARE_MESSAGE"* || "$name" == *"$FIRMWARE_MESSAGE"* || "$body" == *"$FIRMWARE_MESSAGE"* ]]; then
+              echo "🗑️ 删除 Release 和 Tag: $tag"
               gh release delete "$tag" --yes
               gh tag delete "$tag"
             fi
