@@ -21,6 +21,7 @@ jobs:
       - name: 删除匹配关键字的 Releases 和 Tags
         env:
           MY_GITHUB_TOKEN: ${{ secrets.MY_GITHUB_TOKEN }}
+          GH_TOKEN: ${{ secrets.MY_GITHUB_TOKEN }}
         run: |
           echo "匹配关键字: $FIRMWARE_MESSAGE"
 
