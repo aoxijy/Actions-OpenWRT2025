@@ -84,23 +84,6 @@ echo " (CpuMark : 191219.823122" >> /etc/bench.log
 echo " Scores)" >> /etc/bench.log
 EOF
 
-# ================ 网络设置 =======================================
-
-cat >> $ZZZ <<EOF
-# 如果有用IPV6的话,可以使用以下命令创建IPV6客户端(LAN口)
-uci set network.ipv6=interface
-uci set network.ipv6.proto='dhcpv6'
-uci set network.ipv6.ifname='@lan'
-uci set network.ipv6.reqaddress='try'
-uci set network.ipv6.reqprefix='auto'
-uci set firewall.@zone[0].network='lan ipv6'
-
-uci commit dhcp
-uci commit network
-uci commit firewall
-
-EOF
-
 # =======================================================
 
 # 检查 OpenClash 是否启用编译
