@@ -11,6 +11,8 @@
 
 ### 📦 固件下载
 
+以下设备型号为本人自用，已稳定运行。
+
 | 序号 | 平台+设备名称                                                | 固件下载                                                     |
 | ---- | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | 1    | ![img](https://img.shields.io/badge/Lean-x86_64_18.04-32C955.svg?logo=openwrt) | [![img](https://img.shields.io/badge/%E4%B8%8B%E8%BD%BD-%E9%93%BE%E6%8E%A5-blueviolet.svg?logo=hack-the-box)](https://github.com/xcz-ns/OpenWrt-Build/releases?q=Lede_x86_64_18.04&expanded=true) |
