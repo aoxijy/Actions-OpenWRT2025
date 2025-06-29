@@ -416,6 +416,7 @@ jobs:
           tag: ${{ env.FILE_TIME2 }}-${{matrix.target}}
           token: ${{ secrets.MY_GITHUB_TOKEN }}
           body: |
+            ★  型号 : ${{ env.FIRMWARE_MESSAGE }}
             ★  源码 : ${{ env.REPO_URL }}
             ★  分支 : ${{ env.REPO_BRANCH }}
             ★  感谢源码作者无私分享！
