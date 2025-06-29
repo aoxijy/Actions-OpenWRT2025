@@ -20,11 +20,32 @@
 
 ### 🔧 集成源码
 
-- **固件基础源码**  
-  [lede](https://github.com/coolsnowwolf/lede) ｜ [ImmortalWrt](https://github.com/immortalwrt/immortalwrt)
+<h3>✅ 固件基础源码</h3>
+<p>
+  <a href="https://github.com/coolsnowwolf/lede">
+    <img src="https://img.shields.io/badge/Lede-coolsnowwolf-ff69b4.svg?style=flat&logo=appveyor">
+  </a>
+  <a href="https://github.com/immortalwrt/immortalwrt">
+    <img src="https://img.shields.io/badge/ImmortalWrt-immortalwrt-ff69b4.svg?style=flat&logo=appveyor">
+  </a>
+</p>
 
-- **核心插件与功能包**  
-  [xiaorouji](https://github.com/xiaorouji/openwrt-passwall) ｜ [281677160](https://github.com/281677160/openwrt-package)
+<h3>🔧 核心插件与功能包</h3>
+<p>
+  <a href="https://github.com/xiaorouji/openwrt-passwall">
+    <img src="https://img.shields.io/badge/openwrt_passwall-xiaorouji-8a2be2.svg?style=flat&logo=appveyor">
+  </a>
+  <a href="https://github.com/281677160/openwrt-package">
+    <img src="https://img.shields.io/badge/openwrt_package-281677160-8a2be2.svg?style=flat&logo=appveyor">
+  </a>
+</p>
 
-- **自动化脚本与流程**  
-  [P3TERX](https://github.com/P3TERX/Actions-OpenWrt) ｜ [db-one](https://github.com/db-one/OpenWrt-AutoBuild)
+<h3>🤖 自动化脚本与流程</h3>
+<p>
+  <a href="https://github.com/P3TERX/Actions-OpenWrt">
+    <img src="https://img.shields.io/badge/OpenWrt-P3TERX-blueviolet.svg?style=flat&logo=appveyor">
+  </a>
+  <a href="https://github.com/db-one/OpenWrt-AutoBuild">
+    <img src="https://img.shields.io/badge/OpenWrt_AutoBuild-db--one-orange.svg?style=flat&logo=appveyor">
+  </a>
+</p>
