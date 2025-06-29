@@ -64,12 +64,6 @@ else
 fi
 echo ""
 
-#
-# sed -i 's#192.168.1.1#192.168.3.1#g' $NET                                       # 定制默认IP
-# sed -i "s/LEDE /Built on $(TZ=UTC-8 date "+%Y.%m.%d") @ LEDE /g" $ZZZ           # 增加自己个性名称
-# echo "uci set luci.main.mediaurlbase=/luci-static/argon" >> $ZZZ                # 设置默认主题(如果编译可会自动修改默认主题的，有可能会失效)
-echo ""
-
 # ●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●● #
 
 sed -i 's#localtime  = os.date()#localtime  = os.date("%Y年%m月%d日") .. " " .. translate(os.date("%A")) .. " " .. os.date("%X")#g' package/lean/autocore/files/*/index.htm               # 修改默认时间格式
@@ -83,53 +77,6 @@ cat /dev/null > /etc/bench.log
 echo " (CpuMark : 191219.823122" >> /etc/bench.log
 echo " Scores)" >> /etc/bench.log
 EOF
-
-# =======================================================
-
-# # 检查 OpenClash 是否启用编译
-# if grep -qE '^(CONFIG_PACKAGE_luci-app-openclash=n|# CONFIG_PACKAGE_luci-app-openclash=)' "${WORKPATH}/$CUSTOM_SH"; then
-#   # OpenClash 未启用，不执行任何操作
-#   echo "OpenClash 未启用编译"
-#   echo 'rm -rf /etc/openclash' >> $ZZZ
-# else
-#   # OpenClash 已启用，执行配置
-#   if grep -q "CONFIG_PACKAGE_luci-app-openclash=y" "${WORKPATH}/$CUSTOM_SH"; then
-#     # 判断系统架构
-#     arch=$(uname -m)  # 获取系统架构
-#     case "$arch" in
-#       x86_64)
-#         arch="amd64"
-#         ;;
-#       aarch64|arm64)
-#         arch="arm64"
-#         ;;
-#     esac
-#     # OpenClash Meta 开始配置内核
-#     echo "正在执行：为OpenClash下载内核"
-#     mkdir -p $HOME/clash-core
-#     mkdir -p $HOME/files/etc/openclash/core
-#     cd $HOME/clash-core
-#     # 下载Meta内核
-#     wget -q https://raw.githubusercontent.com/vernesong/OpenClash/core/master/meta/clash-linux-$arch.tar.gz
-#     if [[ $? -ne 0 ]];then
-#       wget -q https://raw.githubusercontent.com/vernesong/OpenClash/core/master/meta/clash-linux-$arch.tar.gz
-#     else
-#       echo "OpenClash Meta内核压缩包下载成功，开始解压文件"
-#     fi
-#     tar -zxvf clash-linux-$arch.tar.gz
-#     if [[ -f "$HOME/clash-core/clash" ]]; then
-#       mv -f $HOME/clash-core/clash $HOME/files/etc/openclash/core/clash_meta
-#       chmod +x $HOME/files/etc/openclash/core/clash_meta
-#       echo "OpenClash Meta内核配置成功"
-#     else
-#       echo "OpenClash Meta内核配置失败"
-#     fi
-#     rm -rf $HOME/clash-core/clash-linux-$arch.tar.gz
-#     rm -rf $HOME/clash-core
-#   fi
-# fi
-
-# =======================================================
 
 # 修改退出命令到最后
 cd $HOME && sed -i '/exit 0/d' $ZZZ && echo "exit 0" >> $ZZZ
