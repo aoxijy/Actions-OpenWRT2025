@@ -429,12 +429,6 @@ jobs:
             🔌 插件列表：
             ${{ env.PLUGIN_LIST }}
 
-            🎉 [ ${{ env.FIRMWARE_MESSAGE }} ]固件下载
-
-            ━━━━━━━━━━━━━━━━━━━━
-
-            =========================================
-
           artifacts: ./artifact/firmware/*
 
       - name: 删除运行记录
