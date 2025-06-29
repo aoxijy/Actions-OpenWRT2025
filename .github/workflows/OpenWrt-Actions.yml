@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
     inputs:
       MODEL:
-        required: true
+        required: false
         description: 选择需要编译的固件
         type: choice
         default: ""
