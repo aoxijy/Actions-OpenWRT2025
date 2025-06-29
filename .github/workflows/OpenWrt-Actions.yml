@@ -4,22 +4,15 @@ on:
   workflow_dispatch:
     inputs:
       MODEL:
-        required: false
+        required: true
         description: 选择需要编译的固件
         type: choice
-        default: ""
+        default: Lean_x86_64_18.04
         options:
-          - ""
           - Lean_x86_64_18.04
           - Lean_x86_64_24.01
           - Lean_Cudy_18.04
           - immortalwrt_x86_64
-
-      MODELS:
-        description: "输入多个编译目标（英文逗号分隔）"
-        required: false
-        default: Lede_Cudy_18.04,Lean_x86_64_18.04,Lean_x86_64_24.01,immortalwrt_x86_64
-        type: string
 
       CACHE_BUILD:
         description: "缓存加速"
