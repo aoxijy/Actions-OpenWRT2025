@@ -15,7 +15,12 @@
 
 ### 📦 固件下载
 
-[![固件下载](https://img.shields.io/github/v/release/xcz-ns/OpenWrt-Build?style=for-the-badge&label=固件下载&logo=github)](https://github.com/xcz-ns/OpenWrt-Build/releases)
+| 序号 | 平台+设备名称                                                | 固件下载                                                     |
+| ---- | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| 1    | ![img](https://img.shields.io/badge/Lean-x86_64_18.04-32C955.svg?logo=openwrt) | [![img](https://img.shields.io/badge/%E4%B8%8B%E8%BD%BD-%E9%93%BE%E6%8E%A5-blueviolet.svg?logo=hack-the-box)](https://github.com/xcz-ns/OpenWrt-Build/releases?q=Lean_x86_64_18.04&expanded=true) |
+| 2    | ![img](https://img.shields.io/badge/Lean-x86_64_24.01-32C955.svg?logo=openwrt) | [![img](https://img.shields.io/badge/%E4%B8%8B%E8%BD%BD-%E9%93%BE%E6%8E%A5-blueviolet.svg?logo=hack-the-box)](https://github.com/xcz-ns/OpenWrt-Build/releases?q=Lean_x86_64_24.01&expanded=true) |
+| 3    | ![img](https://img.shields.io/badge/Lean-Cudy_18.04-32C955.svg?logo=openwrt) | [![img](https://img.shields.io/badge/%E4%B8%8B%E8%BD%BD-%E9%93%BE%E6%8E%A5-blueviolet.svg?logo=hack-the-box)](https://github.com/xcz-ns/OpenWrt-Build/releases?q=Lean_Cudy_18.04&expanded=true) |
+| 4    | ![img](https://img.shields.io/badge/ImmortalWrt-x86_64-32C955.svg?logo=openwrt) | [![img](https://img.shields.io/badge/%E4%B8%8B%E8%BD%BD-%E9%93%BE%E6%8E%A5-blueviolet.svg?logo=hack-the-box)](https://github.com/xcz-ns/OpenWrt-Build/releases?q=immortalwrt_x86_64&expanded=true) |
 
 
 ### 🔧 集成源码
@@ -36,19 +41,3 @@
 
 [![P3TERX](https://img.shields.io/badge/OpenWrt-P3TERX-orange.svg?style=flat&logo=appveyor)](https://github.com/P3TERX/Actions-OpenWrt)
  [![db-one](https://img.shields.io/badge/OpenWrt_AutoBuild-db--one-orange.svg?style=flat&logo=appveyor)](https://github.com/db-one/OpenWrt-AutoBuild)
-
-
-
-下面是根据你提供的 GitHub 仓库和四个固件标题生成的「下载区块」Markdown 表格，采用与上面一致的徽章风格：
-
-------
-
-## 固件下载
-
-| 平台+设备名称                                                | 固件编译状态                                                 | 配置文件                                                     | 固件下载                                                     |
-| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| [![img](https://img.shields.io/badge/Lean-x86_64_18.04-32C955.svg?logo=openwrt)](https://github.com/xcz-ns/OpenWrt-Build/blob/main/.github/workflows/Build_Lean_x86_64_18.04.yml) | ![状态](https://github.com/xcz-ns/OpenWrt-Build/actions/workflows/Build_Lean_x86_64_18.04.yml/badge.svg) | [![img](https://img.shields.io/badge/%E7%BC%96%E8%AF%91-%E9%85%8D%E7%BD%AE-orange.svg?logo=apache-spark)](https://github.com/xcz-ns/OpenWrt-Build/blob/main/config/Lean_x86_64_18.04.config) | [![img](https://img.shields.io/badge/%E4%B8%8B%E8%BD%BD-%E9%93%BE%E6%8E%A5-blueviolet.svg?logo=hack-the-box)](https://github.com/xcz-ns/OpenWrt-Build/releases?q=Lean_x86_64_18.04&expanded=true) |
-| [![img](https://img.shields.io/badge/Lean-x86_64_24.01-32C955.svg?logo=openwrt)](https://github.com/xcz-ns/OpenWrt-Build/blob/main/.github/workflows/Build_Lean_x86_64_24.01.yml) | ![状态](https://github.com/xcz-ns/OpenWrt-Build/actions/workflows/Build_Lean_x86_64_24.01.yml/badge.svg) | [![img](https://img.shields.io/badge/%E7%BC%96%E8%AF%91-%E9%85%8D%E7%BD%AE-orange.svg?logo=apache-spark)](https://github.com/xcz-ns/OpenWrt-Build/blob/main/config/Lean_x86_64_24.01.config) | [![img](https://img.shields.io/badge/%E4%B8%8B%E8%BD%BD-%E9%93%BE%E6%8E%A5-blueviolet.svg?logo=hack-the-box)](https://github.com/xcz-ns/OpenWrt-Build/releases?q=Lean_x86_64_24.01&expanded=true) |
-| [![img](https://img.shields.io/badge/Lean-Cudy_18.04-32C955.svg?logo=openwrt)](https://github.com/xcz-ns/OpenWrt-Build/blob/main/.github/workflows/Build_Lean_Cudy_18.04.yml) | ![状态](https://github.com/xcz-ns/OpenWrt-Build/actions/workflows/Build_Lean_Cudy_18.04.yml/badge.svg) | [![img](https://img.shields.io/badge/%E7%BC%96%E8%AF%91-%E9%85%8D%E7%BD%AE-orange.svg?logo=apache-spark)](https://github.com/xcz-ns/OpenWrt-Build/blob/main/config/Lean_Cudy_18.04.config) | [![img](https://img.shields.io/badge/%E4%B8%8B%E8%BD%BD-%E9%93%BE%E6%8E%A5-blueviolet.svg?logo=hack-the-box)](https://github.com/xcz-ns/OpenWrt-Build/releases?q=Lean_Cudy_18.04&expanded=true) |
-| [![img](https://img.shields.io/badge/ImmortalWrt-x86_64-32C955.svg?logo=openwrt)](https://github.com/xcz-ns/OpenWrt-Build/blob/main/.github/workflows/Build_immortalwrt_x86_64.yml) | ![状态](https://github.com/xcz-ns/OpenWrt-Build/actions/workflows/Build_immortalwrt_x86_64.yml/badge.svg) | [![img](https://img.shields.io/badge/%E7%BC%96%E8%AF%91-%E9%85%8D%E7%BD%AE-orange.svg?logo=apache-spark)](https://github.com/xcz-ns/OpenWrt-Build/blob/main/config/immortalwrt_x86_64.config) | [![img](https://img.shields.io/badge/%E4%B8%8B%E8%BD%BD-%E9%93%BE%E6%8E%A5-blueviolet.svg?logo=hack-the-box)](https://github.com/xcz-ns/OpenWrt-Build/releases?q=immortalwrt_x86_64&expanded=true) |
-
