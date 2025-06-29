@@ -17,9 +17,9 @@
 
 | 序号 | 平台+设备名称                                                | 固件下载                                                     |
 | ---- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| 1    | ![img](https://img.shields.io/badge/Lean-x86_64_18.04-32C955.svg?logo=openwrt) | [![img](https://img.shields.io/badge/%E4%B8%8B%E8%BD%BD-%E9%93%BE%E6%8E%A5-blueviolet.svg?logo=hack-the-box)](https://github.com/xcz-ns/OpenWrt-Build/releases?q=Lean_x86_64_18.04&expanded=true) |
-| 2    | ![img](https://img.shields.io/badge/Lean-x86_64_24.01-32C955.svg?logo=openwrt) | [![img](https://img.shields.io/badge/%E4%B8%8B%E8%BD%BD-%E9%93%BE%E6%8E%A5-blueviolet.svg?logo=hack-the-box)](https://github.com/xcz-ns/OpenWrt-Build/releases?q=Lean_x86_64_24.01&expanded=true) |
-| 3    | ![img](https://img.shields.io/badge/Lean-Cudy_18.04-32C955.svg?logo=openwrt) | [![img](https://img.shields.io/badge/%E4%B8%8B%E8%BD%BD-%E9%93%BE%E6%8E%A5-blueviolet.svg?logo=hack-the-box)](https://github.com/xcz-ns/OpenWrt-Build/releases?q=Lean_Cudy_18.04&expanded=true) |
+| 1    | ![img](https://img.shields.io/badge/Lean-x86_64_18.04-32C955.svg?logo=openwrt) | [![img](https://img.shields.io/badge/%E4%B8%8B%E8%BD%BD-%E9%93%BE%E6%8E%A5-blueviolet.svg?logo=hack-the-box)](https://github.com/xcz-ns/OpenWrt-Build/releases?q=Lede_x86_64_18.04&expanded=true) |
+| 2    | ![img](https://img.shields.io/badge/Lean-x86_64_24.01-32C955.svg?logo=openwrt) | [![img](https://img.shields.io/badge/%E4%B8%8B%E8%BD%BD-%E9%93%BE%E6%8E%A5-blueviolet.svg?logo=hack-the-box)](https://github.com/xcz-ns/OpenWrt-Build/releases?q=Lede_x86_64_24.01&expanded=true) |
+| 3    | ![img](https://img.shields.io/badge/Lean-Cudy_18.04-32C955.svg?logo=openwrt) | [![img](https://img.shields.io/badge/%E4%B8%8B%E8%BD%BD-%E9%93%BE%E6%8E%A5-blueviolet.svg?logo=hack-the-box)](https://github.com/xcz-ns/OpenWrt-Build/releases?q=Lede_Cudy_18.04&expanded=true) |
 | 4    | ![img](https://img.shields.io/badge/ImmortalWrt-x86_64-32C955.svg?logo=openwrt) | [![img](https://img.shields.io/badge/%E4%B8%8B%E8%BD%BD-%E9%93%BE%E6%8E%A5-blueviolet.svg?logo=hack-the-box)](https://github.com/xcz-ns/OpenWrt-Build/releases?q=immortalwrt_x86_64&expanded=true) |
 
 
