@@ -197,7 +197,7 @@ EOF
 
 # 设置固件大小:
 cat >> .config <<EOF
-CONFIG_TARGET_KERNEL_PARTSIZE=16
+CONFIG_TARGET_KERNEL_PARTSIZE=32
 CONFIG_TARGET_ROOTFS_PARTSIZE=2048
 EOF
 
@@ -218,12 +218,12 @@ EOF
 # EOF
 
 # 编译PVE/KVM、Hyper-V、VMware镜像以及镜像填充
-cat >> .config <<EOF
-CONFIG_QCOW2_IMAGES=n
-CONFIG_VHDX_IMAGES=n
-CONFIG_VMDK_IMAGES=n
-CONFIG_TARGET_IMAGES_PAD=y
-EOF
+# cat >> .config <<EOF
+# CONFIG_QCOW2_IMAGES=n
+# CONFIG_VHDX_IMAGES=n
+# CONFIG_VMDK_IMAGES=n
+# CONFIG_TARGET_IMAGES_PAD=y
+# EOF
 
 # 多文件系统支持:
 # cat >> .config <<EOF
@@ -236,13 +236,13 @@ EOF
 # EOF
 
 # USB3.0支持:
-cat >> .config <<EOF
+# cat >> .config <<EOF
 # CONFIG_PACKAGE_kmod-usb-ohci=y
 # CONFIG_PACKAGE_kmod-usb-ohci-pci=y
 # CONFIG_PACKAGE_kmod-usb2=y
 # CONFIG_PACKAGE_kmod-usb2-pci=y
-CONFIG_PACKAGE_kmod-usb3=y
-EOF
+# CONFIG_PACKAGE_kmod-usb3=y
+# EOF
 
 # 多线多拨:
 # cat >> .config <<EOF
