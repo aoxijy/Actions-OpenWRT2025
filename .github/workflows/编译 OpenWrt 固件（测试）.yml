@@ -12,6 +12,7 @@ on:
           - Lean_x86_64_18.04
           - Lean_x86_64_24.01
           - Lean_Cudy_18.04
+          - Lean_R3S_18.04
           - Immortalwrt_x86_64
 
       CACHE_BUILD:
