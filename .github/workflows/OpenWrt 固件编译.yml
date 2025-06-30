@@ -30,6 +30,11 @@ on:
   schedule:
     - cron: 0 17 * * *
 
+run-name: >-
+  ${{ github.event_name == 'workflow_dispatch'
+      && format('编译 {0} 固件', inputs.MODEL)
+      || 'OpenWrt 固件编译' }}
+
 env:
   TZ: Asia/Shanghai
   MY_GITHUB_TOKEN: ${{ secrets.MY_GITHUB_TOKEN }}
