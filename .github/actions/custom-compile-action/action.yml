@@ -76,6 +76,7 @@ runs:
   using: "composite"
   steps:
     - name: 初始化系统环境
+      shell: bash
       env:
         DEBIAN_FRONTEND: noninteractive
       run: |
@@ -96,6 +97,7 @@ runs:
         sudo -E apt -y autoremove --purge
         sudo -E apt clean
     - name: 编译前准备
+      shell: bash
       run: |
         sudo -E apt-get -y install xsltproc zip grep python3-pip python3-ply libc6-dev libtinfo-dev libtinfo5 ncurses-doc \
                     python2 git-core wget curl rsync dos2unix fakeroot jq libc6-dev-i386 libncurses5-dev libncursesw5 \
@@ -107,6 +109,7 @@ runs:
         echo " 系统空间      类型   总数  已用  可用 使用率"
         df -hT $PWD
     - name: 释放Ubuntu磁盘空间
+      shell: bash
       uses: jlumbroso/free-disk-space@main
       with:
         tool-cache: true
@@ -134,6 +137,7 @@ runs:
         sudo chown -R $USER:$GROUPS /github-builder
         df -Th
     - name: 下载${{ inputs.target }}源码
+      shell: bash
       working-directory: /github-builder
       run: |
         df -hT $PWD
@@ -143,6 +147,7 @@ runs:
         echo "$TOOLCHAIN_HASH" > openwrt/.toolchain.hash
         ln -sf /github-builder/openwrt $GITHUB_WORKSPACE/openwrt
     - name: 缓存使用标志
+      shell: bash
       env:
         EVENT_NAME: ${{ github.event_name }}
         INPUT_CACHE_BUILD: ${{ inputs.cache-build }}
@@ -164,6 +169,7 @@ runs:
           echo "USE_CACHE=false" >> $GITHUB_ENV
         fi
     - name: 缓存加速
+      shell: bash
       uses: xcz-ns/cachewrtbuild@main
       if: env.USE_CACHE == 'true'
       with:
@@ -171,6 +177,7 @@ runs:
         prefix: ${{ github.workspace }}/openwrt
         mixkey: ${{ env.FIRMWARE_MESSAGE }}
     - name: 更新时区、编译时间
+      shell: bash
       id: date
       run: |
         sudo timedatectl set-timezone "$TZ"
@@ -181,6 +188,7 @@ runs:
         START_TIME=`date +'%Y-%m-%d %H:%M:%S'`
         echo "START_SECONDS=$(date --date="$START_TIME" +%s)" >> $GITHUB_ENV
     - name: 加载源,定制文件并生成自定义配置
+      shell: bash
       run: |
         cp -Rf `find ./ -maxdepth 1 -type d ! -path './openwrt' ! -path './'` openwrt
         cd openwrt
@@ -219,15 +227,18 @@ runs:
         mv ${WORKPATH}/$CONFIG_FILE .config
         make defconfig
     - name: 创建 .ssh 目录
+      shell: bash
       if: ${{ inputs.ssh-actions }} == 'true'
       run: mkdir -p $GITHUB_WORKSPACE/openwrt/.ssh
     - name: SSH远程连接服务器
+      shell: bash
       uses: db-one/debugger-action@main
       if: ${{ inputs.ssh-actions }} == 'true'
       env:
         TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
         TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
     - name: 输出编译信息
+      shell: bash
       run: |
         cd openwrt
         echo
@@ -272,14 +283,17 @@ runs:
         echo
         echo "=========================================="
     - name: 下载编译所需文件
+      shell: bash
       run: |
         cd openwrt && make download -j4
     - name: 开始编译固件
+      shell: bash
       id: compile
       run: |
         cd openwrt
         make -j$(nproc) || make -j1 V=s
     - name: 检查空间使用情况
+      shell: bash
       run: |
         echo "======================="
         echo "Space usage:"
@@ -290,6 +304,7 @@ runs:
         du -h --max-depth=1 openwrt/build_dir
         du -h --max-depth=1 openwrt/bin
     - name: 整理固件文件
+      shell: bash
       id: organizer
       run: |
         mkdir -p ./artifact/firmware
@@ -314,42 +329,49 @@ runs:
         HOUR=$(( $SECONDS/3600 )) && MIN=$(( ($SECONDS-${HOUR}*3600)/60 )) && SEC=$(( $SECONDS-${HOUR}*3600-${MIN}*60 ))
         echo "BUILD_TIME=${HOUR}时${MIN}分${SEC}秒" >> $GITHUB_ENV
     - name: 上传固件文件
+      shell: bash
       if: steps.compile.outcome == 'success' && ${{ inputs.upload-firmware }} == 'true'
       uses: actions/upload-artifact@v4
       with:
         name: ${{ inputs.target }}_OpenWrt_firmware_${{ env.FILE_TIME }}
         path: ./artifact/firmware/
     - name: 上传PVE/KVM镜像文件
+      shell: bash
       if: steps.compile.outcome == 'success' && ${{ inputs.upload-qcow2 }} == 'true'
       uses: actions/upload-artifact@v4
       with:
         name: ${{ inputs.target }}_OpenWrt_pvekvm_${{ env.FILE_TIME }}
         path: ./artifact/pvekvm/
     - name: 上传Hyper-V镜像文件
+      shell: bash
       if: steps.compile.outcome == 'success' && ${{ inputs.upload-vhdx }} == 'true'
       uses: actions/upload-artifact@v4
       with:
         name: ${{ inputs.target }}_OpenWrt_hyperv_${{ env.FILE_TIME }}
         path: ./artifact/hyperv/
     - name: 上传VMware镜像文件
+      shell: bash
       if: steps.compile.outcome == 'success' && ${{ inputs.upload-vmdk }} == 'true'
       uses: actions/upload-artifact@v4
       with:
         name: ${{ inputs.target }}_OpenWrt_vmware_${{ env.FILE_TIME }}
         path: ./artifact/vmware/
     - name: 上传插件包文件
+      shell: bash
       if: steps.compile.outcome == 'success' && ${{ inputs.upload-ipk }} == 'true'
       uses: actions/upload-artifact@v4
       with:
         name: ${{ inputs.target }}_OpenWrt_package_${{ env.FILE_TIME }}
         path: ./artifact/package/
     - name: 上传固件信息
+      shell: bash
       if: steps.compile.outcome == 'success' && ${{ inputs.upload-config }} == 'true'
       uses: actions/upload-artifact@v4
       with:
         name: ${{ inputs.target }}_OpenWrt_buildinfo_${{ env.FILE_TIME }}
         path: ./artifact/buildinfo/
     - name: 自动发布固件到 Releases
+      shell: bash
       uses: ncipollo/release-action@main
       if: steps.compile.outcome == 'success' && ${{ inputs.upload-release }} == 'true'
       with:
@@ -368,6 +390,7 @@ runs:
           ${{ env.PLUGIN_LIST }}
         artifacts: ./artifact/firmware/*
     - name: 删除运行记录
+      shell: bash
       uses: Mattraks/delete-workflow-runs@v2
       with:
         token: ${{ secrets.MY_GITHUB_TOKEN }}
@@ -375,6 +398,7 @@ runs:
         retain_days: 0
         keep_minimum_runs: 9
     - name: 删除自动发布的旧固件
+      shell: bash
       uses: shidahuilang/delete-older-releases@main
       if: steps.compile.outcome == 'success' && ${{ inputs.upload-release }} == 'true'
       with:
@@ -383,6 +407,7 @@ runs:
       env:
         GITHUB_TOKEN: ${{ secrets.MY_GITHUB_TOKEN }}
     - name: 编译成功信息通知-企业微信
+      shell: bash
       if: steps.compile.outcome == 'success' && ${{ inputs.wechat-work-push }} == 'true'
       run: |
         curl "http://${{ secrets.WECHAT_WORK_URL }}/push?token=${{ secrets.WECHAT_WORK_TOKEN }}&message=\
@@ -393,6 +418,7 @@ runs:
         🎉发布地址：${{ env.GITHUB_RELEASE }}%0a%0a\
         🌴固件已经编译完成🎈！！！" || true
     - name: 编译成功信息通知-Telegram
+      shell: bash
       if: steps.compile.outcome == 'success' && ${{ inputs.telegram-bot }} == 'true'
       run: |
         curl "https://api.telegram.org/bot ${{ secrets.TELEGRAM_BOT_TOKEN }}/sendMessage" -d "chat_id=${{ secrets.TELEGRAM_CHAT_ID }}&text=
