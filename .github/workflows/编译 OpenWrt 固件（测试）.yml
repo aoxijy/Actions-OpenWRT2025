@@ -413,46 +413,6 @@ jobs:
           name: ${{matrix.target}}_OpenWrt_buildinfo_${{ env.FILE_TIME }}
           path: ./artifact/buildinfo/
 
-      - name: 自动发布固件到 Releases
-        uses: ncipollo/release-action@main
-        if: steps.compile.outcome == 'success' && env.UPLOAD_RELEASE == 'true'
-        with:
-          name: ${{ env.FILE_TIME1 }} 「 ${{ env.FIRMWARE_MESSAGE }} 」
-          tag: ${{ env.FILE_TIME2 }}-${{matrix.target}}
-          token: ${{ secrets.MY_GITHUB_TOKEN }}
-          body: |
-            ★  源码 : ${{ env.REPO_URL }}
-            ★  分支 : ${{ env.REPO_BRANCH }}
-            ★  感谢源码作者无私分享！
-
-            🖥 内核版本：${{ env.KERNEL_PATCHVER }}
-
-            🎈 编译时间：${{ env.FILE_TIME1 }}
-
-            ⏰ 编译用时：${{ env.BUILD_TIME }}
-
-            🔌 插件列表：
-            ${{ env.PLUGIN_LIST }}
-
-          artifacts: ./artifact/firmware/*
-
-      - name: 删除运行记录
-        uses: Mattraks/delete-workflow-runs@v2
-        with:
-          token: ${{ secrets.MY_GITHUB_TOKEN }}
-          repository: ${{ github.repository }}
-          retain_days: 0 #保留最后多少记录不删除
-          keep_minimum_runs: 9
-
-      - name: 删除自动发布的旧固件
-        uses: shidahuilang/delete-older-releases@main
-        if: steps.compile.outcome == 'success' && env.UPLOAD_RELEASE == 'true'
-        with:
-          keep_latest: 15 #保留多少个releases不删除
-          delete_tags: true
-        env:
-          GITHUB_TOKEN: ${{ secrets.MY_GITHUB_TOKEN }}
-
       - name: 编译成功信息通知-企业微信
         if: steps.compile.outcome == 'success' && env.WECHAT_WORK_PUSH == 'true'
         run: |
