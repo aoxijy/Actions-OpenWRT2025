@@ -207,9 +207,9 @@ CONFIG_TARGET_IMAGES_GZIP=y
 EOF
 
 # 编译UEFI固件:
-# cat >> .config <<EOF
+cat >> .config <<EOF
 # CONFIG_EFI_IMAGES=y
-# EOF
+EOF
 
 # IPv6支持:
 # cat >> .config <<EOF
@@ -218,12 +218,12 @@ EOF
 # EOF
 
 # 编译PVE/KVM、Hyper-V、VMware镜像以及镜像填充
-# cat >> .config <<EOF
-# CONFIG_QCOW2_IMAGES=n
-# CONFIG_VHDX_IMAGES=n
-# CONFIG_VMDK_IMAGES=n
-# CONFIG_TARGET_IMAGES_PAD=y
-# EOF
+cat >> .config <<EOF
+CONFIG_QCOW2_IMAGES=y
+CONFIG_VHDX_IMAGES=y
+CONFIG_VMDK_IMAGES=y
+CONFIG_TARGET_IMAGES_PAD=y
+EOF
 
 # 多文件系统支持:
 # cat >> .config <<EOF
