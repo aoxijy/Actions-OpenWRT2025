@@ -1,4 +1,4 @@
-name: Lean_x86_64_18.04
+name: Lean_Cudy_18.04
 on:
   workflow_dispatch:
     inputs:
@@ -6,7 +6,7 @@ on:
         required: true
         description: 选择需要编译的固件
         type: choice
-        default: Lean_x86_64_18.04
+        default: Lean_Cudy_18.04
         options:
           - Lean_Cudy_18.04
       CACHE_BUILD:
