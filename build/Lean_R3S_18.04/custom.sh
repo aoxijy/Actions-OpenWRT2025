@@ -384,7 +384,7 @@ CONFIG_PACKAGE_kmod-rtl8821cu=y                 # RTL8821CU 无线驱动（USB�
 CONFIG_PACKAGE_kmod-rtl8822cu=y                 # RTL8822CU 无线驱动（USB）
 CONFIG_PACKAGE_kmod-rtw88-usb=y                 # rtw88 USB 系列无线驱动
 CONFIG_PACKAGE_kmod-mt76x2u=y                   # USB网卡
-CONFIG_PACKAGE_kmod-mt76                        # USB网卡
+CONFIG_PACKAGE_kmod-mt76=y                       # USB网卡
 CONFIG_PACKAGE_hostapd-common=y
 CONFIG_DRIVER_11AC_SUPPORT=y
 CONFIG_DRIVER_11AX_SUPPORT=y
