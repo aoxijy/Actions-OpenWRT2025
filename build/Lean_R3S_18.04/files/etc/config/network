@@ -6,21 +6,21 @@ config interface 'loopback'
 	option netmask '255.0.0.0'
 
 config globals 'globals'
+	option packet_steering '1'
 
 config device
 	option name 'br-lan'
 	option type 'bridge'
 	list ports 'eth1'
-	list ports 'dheth0'
+	option promisc '1'
 
 config device
 	option name 'eth1'
-	option macaddr '00:E0:4C:17:29:77'
 
 config interface 'wan'
 	option device 'eth0'
 	option proto 'dhcp'
-	option hostname '*'
+	option ifname 'eth0'
 	option ipv6 '0'
 	option peerdns '0'
 	list dns '114.114.114.114'
@@ -29,14 +29,13 @@ config interface 'wan'
 config interface 'lan'
 	option device 'br-lan'
 	option proto 'static'
-	option defaultroute '0'
 	option ipaddr '192.168.0.1'
 	option netmask '255.255.255.0'
 	option delegate '0'
+	option ifname 'eth1'
 
 config device
 	option name 'eth0'
-	option macaddr '00:E0:4C:17:29:78'
 
 config interface 'WireGuard'
 	option proto 'wireguard'
@@ -55,4 +54,4 @@ config wireguard_WireGuard
 	list allowed_ips '192.168.21.0/24'
 	list allowed_ips '192.168.11.0/24'
 	list allowed_ips '192.168.3.0/24'
-
+	
