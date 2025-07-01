@@ -63,15 +63,15 @@ sed -i 's#%D %V, %C#%D %V, %C Lean_R3S#g' package/base-files/files/etc/banner   
 echo "uci set luci.main.mediaurlbase=/luci-static/design" >> $ZZZ                  # 设置默认主题为 argon（如编译器强制覆盖可能失效）
 
 # ====================== 性能跑分 ========================
-echo "rm -f /etc/uci-defaults/xxx-coremark" >> "$ZZZ"
-cat >> $ZZZ <<EOF
-cat /dev/null > /etc/bench.log
-echo " (CpuMark : 191219.823122" >> /etc/bench.log
-echo " Scores)" >> /etc/bench.log
-EOF
+# echo "rm -f /etc/uci-defaults/xxx-coremark" >> "$ZZZ"
+# cat >> $ZZZ <<EOF
+# cat /dev/null > /etc/bench.log
+# echo " (CpuMark : 191219.823122" >> /etc/bench.log
+# echo " Scores)" >> /etc/bench.log
+# EOF
 
 # ===================== 网络设置 =========================
-# cat >> $ZZZ <<-EOF
+cat >> $ZZZ <<-EOF
 # 设置网络 - 旁路由模式
 # uci set network.lan.gateway='192.168.11.1'                      # 设置 IPv4 网关
 # uci set network.lan.dns='114.114.114.114'                       # 设置 DNS（多个用空格分隔）
@@ -89,10 +89,10 @@ EOF
 # uci set firewall.@zone[0].masq='1'                              # 启用 LAN 口 IP 动态伪装
 
 # 禁用 IPv6（旁路模式下推荐）
-# uci del network.lan.ip6assign                                     # 禁用 IPv6 分配长度
-# uci del dhcp.lan.ra                                               # 禁用 IPv6 路由通告服务
-# uci del dhcp.lan.dhcpv6                                           # 禁用 DHCPv6 服务
-# uci del dhcp.lan.ra_management                                    # 禁用 DHCPv6 管理模式
+uci del network.lan.ip6assign                                     # 禁用 IPv6 分配长度
+uci del dhcp.lan.ra                                               # 禁用 IPv6 路由通告服务
+uci del dhcp.lan.dhcpv6                                           # 禁用 DHCPv6 服务
+uci del dhcp.lan.ra_management                                    # 禁用 DHCPv6 管理模式
 
 # 如需启用 IPv6，可取消下面注释启用：
 # uci set network.ipv6=interface                                  # 新建 IPv6 网络接口
@@ -105,7 +105,7 @@ EOF
 # uci commit dhcp                                                   # 保存 DHCP 配置
 # uci commit network                                                # 保存网络配置
 # uci commit firewall                                               # 保存防火墙配置
-# EOF
+EOF
 
 # =============== 检查 OpenClash 是否启用编译 ==================
 # if grep -qE '^(CONFIG_PACKAGE_luci-app-openclash=n|# CONFIG_PACKAGE_luci-app-openclash=)' "${WORKPATH}/$CUSTOM_SH"; then
@@ -268,7 +268,7 @@ EOF
 
 # 常用 LuCI 插件:
 cat >> .config <<EOF
-CONFIG_PACKAGE_luci-app-filebrowser=n               # 文件浏览器
+CONFIG_PACKAGE_luci-app-filebrowser=y               # 文件浏览器
 CONFIG_PACKAGE_luci-app-ddns=y                      # DDNS 服务
 CONFIG_PACKAGE_luci-app-filetransfer=y              # 系统 - 文件传输
 CONFIG_PACKAGE_luci-app-diskman=y                   # 磁盘管理
@@ -281,10 +281,11 @@ CONFIG_PACKAGE_luci-app-nlbwmon=y                   # 宽带流量统计
 CONFIG_PACKAGE_luci-app-dockerman=y                 # Docker 管理
 CONFIG_PACKAGE_luci-app-wolplus=y                   # 网络唤醒plus
 CONFIG_PACKAGE_luci-app-tailscale=y                 # tailscale VPN
+CONFIG_PACKAGE_luci-app-gowebdav=y                  # GoWebDAV 文件访问
+CONFIG_PACKAGE_luci-app-lucky=y                     # lucky 定时任务
+CONFIG_PACKAGE_luci-app-cpufreq=y                   # cpufreq 定时任务
 
 CONFIG_PACKAGE_luci-app-wol=n                       # 网络唤醒
-CONFIG_PACKAGE_luci-app-gowebdav=n                  # GoWebDAV 文件访问
-CONFIG_PACKAGE_luci-app-lucky=n                     # lucky 定时任务
 CONFIG_PACKAGE_luci-app-accesscontrol=n             # 上网时间控制
 CONFIG_PACKAGE_luci-app-wrtbwmon=n                  # 实时流量监控
 CONFIG_PACKAGE_luci-app-vlmcsd=n                    # KMS 激活服务器
@@ -387,15 +388,12 @@ CONFIG_PACKAGE_kmod-mt76x2u=y                   # USB网卡
 CONFIG_PACKAGE_kmod-mt76=y                      # USB网卡
 
 # 特殊网卡驱动
-CONFIG_PACKAGE_kmod-r8125=y                     # Realtek 8125 网卡驱动
 CONFIG_PACKAGE_kmod-r8168=y                     # Realtek 8168 网卡驱动
 EOF
 
 # 其他软件包:
 cat >> .config <<EOF
 CONFIG_HAS_FPU=y                         # 设备支持硬件浮点单元 (FPU)
-CONFIG_PACKAGE_dnsmasq=y
-CONFIG_PACKAGE_iputils-ping=y
 EOF
 
 sed -i 's/^[ \t]*//g' ./.config
