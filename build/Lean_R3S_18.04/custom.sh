@@ -71,7 +71,7 @@ echo "uci set luci.main.mediaurlbase=/luci-static/design" >> $ZZZ               
 # EOF
 
 # ===================== 网络设置 =========================
-cat >> $ZZZ <<-EOF
+# cat >> $ZZZ <<-EOF
 # 设置网络 - 旁路由模式
 # uci set network.lan.gateway='192.168.11.1'                      # 设置 IPv4 网关
 # uci set network.lan.dns='114.114.114.114'                       # 设置 DNS（多个用空格分隔）
@@ -102,10 +102,10 @@ cat >> $ZZZ <<-EOF
 # uci set network.ipv6.reqprefix='auto'                           # 自动请求前缀长度
 # uci set firewall.@zone[0].network='lan ipv6'                    # 把 IPv6 接口加入防火墙 LAN 区域
 
-uci commit dhcp                                                   # 保存 DHCP 配置
-uci commit network                                                # 保存网络配置
-uci commit firewall                                               # 保存防火墙配置
-EOF
+# uci commit dhcp                                                   # 保存 DHCP 配置
+# uci commit network                                                # 保存网络配置
+# uci commit firewall                                               # 保存防火墙配置
+# EOF
 
 # =============== 检查 OpenClash 是否启用编译 ==================
 # if grep -qE '^(CONFIG_PACKAGE_luci-app-openclash=n|# CONFIG_PACKAGE_luci-app-openclash=)' "${WORKPATH}/$CUSTOM_SH"; then
