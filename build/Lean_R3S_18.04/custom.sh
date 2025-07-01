@@ -283,7 +283,7 @@ CONFIG_PACKAGE_luci-app-wolplus=y                   # 网络唤醒plus
 CONFIG_PACKAGE_luci-app-tailscale=y                 # tailscale VPN
 CONFIG_PACKAGE_luci-app-gowebdav=y                  # GoWebDAV 文件访问
 CONFIG_PACKAGE_luci-app-lucky=y                     # lucky 定时任务
-CONFIG_PACKAGE_luci-app-cpufreq=y                   # cpufreq 定时任务
+CONFIG_PACKAGE_luci-app-cpufreq=y                   # cpufreq
 
 CONFIG_PACKAGE_luci-app-wol=n                       # 网络唤醒
 CONFIG_PACKAGE_luci-app-accesscontrol=n             # 上网时间控制
