@@ -63,12 +63,12 @@ sed -i 's#%D %V, %C#%D %V, %C Lean_R3S#g' package/base-files/files/etc/banner   
 echo "uci set luci.main.mediaurlbase=/luci-static/design" >> $ZZZ                  # 设置默认主题为 argon（如编译器强制覆盖可能失效）
 
 # ====================== 性能跑分 ========================
-# echo "rm -f /etc/uci-defaults/xxx-coremark" >> "$ZZZ"
-# cat >> $ZZZ <<EOF
-# cat /dev/null > /etc/bench.log
-# echo " (CpuMark : 191219.823122" >> /etc/bench.log
-# echo " Scores)" >> /etc/bench.log
-# EOF
+echo "rm -f /etc/uci-defaults/xxx-coremark" >> "$ZZZ"
+cat >> $ZZZ <<EOF
+cat /dev/null > /etc/bench.log
+echo " (CpuMark : 191219.823122" >> /etc/bench.log
+echo " Scores)" >> /etc/bench.log
+EOF
 
 # ===================== 网络设置 =========================
 cat >> $ZZZ <<-EOF
