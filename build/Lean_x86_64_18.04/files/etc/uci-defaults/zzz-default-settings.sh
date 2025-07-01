@@ -21,7 +21,7 @@ chmod 600 /etc/dropbear/authorized_keys
 # 给予执行权限
 chmod 777 /usr/bin/filebrowser
 
-# 删除README
-rm -rf /README
+# 删除README.md
+rm -rf /README.md
 
 exit 0
