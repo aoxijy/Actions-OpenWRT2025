@@ -89,10 +89,10 @@ cat >> $ZZZ <<-EOF
 # uci set firewall.@zone[0].masq='1'                              # 启用 LAN 口 IP 动态伪装
 
 # 禁用 IPv6（旁路模式下推荐）
-uci del network.lan.ip6assign                                     # 禁用 IPv6 分配长度
-uci del dhcp.lan.ra                                               # 禁用 IPv6 路由通告服务
-uci del dhcp.lan.dhcpv6                                           # 禁用 DHCPv6 服务
-uci del dhcp.lan.ra_management                                    # 禁用 DHCPv6 管理模式
+# uci del network.lan.ip6assign                                     # 禁用 IPv6 分配长度
+# uci del dhcp.lan.ra                                               # 禁用 IPv6 路由通告服务
+# uci del dhcp.lan.dhcpv6                                           # 禁用 DHCPv6 服务
+# uci del dhcp.lan.ra_management                                    # 禁用 DHCPv6 管理模式
 
 # 如需启用 IPv6，可取消下面注释启用：
 # uci set network.ipv6=interface                                  # 新建 IPv6 网络接口
@@ -197,19 +197,13 @@ EOF
 
 # 设置固件大小:
 cat >> .config <<EOF
-CONFIG_TARGET_KERNEL_PARTSIZE=32
 CONFIG_TARGET_ROOTFS_PARTSIZE=2048
 EOF
 
 # 固件压缩:
-cat >> .config <<EOF
-CONFIG_TARGET_IMAGES_GZIP=y
-EOF
-
-# 编译UEFI固件:
-cat >> .config <<EOF
-# CONFIG_EFI_IMAGES=y
-EOF
+# cat >> .config <<EOF
+# CONFIG_TARGET_IMAGES_GZIP=y
+# EOF
 
 # IPv6支持:
 # cat >> .config <<EOF
@@ -218,12 +212,12 @@ EOF
 # EOF
 
 # 编译PVE/KVM、Hyper-V、VMware镜像以及镜像填充
-cat >> .config <<EOF
-CONFIG_QCOW2_IMAGES=y
-CONFIG_VHDX_IMAGES=y
-CONFIG_VMDK_IMAGES=y
-CONFIG_TARGET_IMAGES_PAD=y
-EOF
+# cat >> .config <<EOF
+# CONFIG_QCOW2_IMAGES=y
+# CONFIG_VHDX_IMAGES=y
+# CONFIG_VMDK_IMAGES=y
+# CONFIG_TARGET_IMAGES_PAD=y
+# EOF
 
 # 多文件系统支持:
 # cat >> .config <<EOF
@@ -273,7 +267,6 @@ EOF
 # ShadowsocksR 插件:
 cat >> .config <<EOF
 CONFIG_PACKAGE_luci-app-ssr-plus=n                                    # SSR Plus 插件（已禁用）
-# CONFIG_PACKAGE_luci-app-ssr-plus_INCLUDE_SagerNet_Core is not set   # SSR 使用的核心组件（未启用）
 EOF
 
 # Passwall 插件:
@@ -368,7 +361,6 @@ EOF
 
 # 常用软件包:
 cat >> .config <<EOF
-CONFIG_PACKAGE_firewall4=n               # 适配18.04版本，关闭 firewall4
 CONFIG_PACKAGE_firewall=y                # 启用 firewall（传统防火墙）
 CONFIG_PACKAGE_curl=y                    # 命令行 HTTP 工具 curl
 CONFIG_PACKAGE_htop=y                    # 交互式进程查看器 htop
@@ -393,6 +385,8 @@ CONFIG_PACKAGE_qemu-ga=y                 # QEMU 客户端代理（Guest Agent）
 CONFIG_PACKAGE_kmod-fuse=y               # FUSE 文件系统支持
 CONFIG_PACKAGE_kmod-mt76=y               # USB网卡
 CONFIG_PACKAGE_kmod-mt76x2u=y            # USB网卡
+
+CONFIG_PACKAGE_firewall4=n               # 适配18.04版本，关闭 firewall4
 EOF
 
 # 其他软件包:
