@@ -382,11 +382,194 @@ CONFIG_PACKAGE_vsftpd-alt=n              # VSFTPD 替代版本（未启用）
 CONFIG_PACKAGE_openssh-sftp-server=y     # OpenSSH SFTP 服务端
 CONFIG_PACKAGE_qemu-ga=y                 # QEMU 客户端代理（Guest Agent）
 # CONFIG_PACKAGE_autocore-x86=y          # X86 优化工具（未启用）
-CONFIG_PACKAGE_kmod-fuse=y               # FUSE 文件系统支持
-CONFIG_PACKAGE_kmod-mt76=y               # USB网卡
-CONFIG_PACKAGE_kmod-mt76x2u=y            # USB网卡
-
 CONFIG_PACKAGE_firewall4=n               # 适配18.04版本，关闭 firewall4
+EOF
+
+cat >> .config <<EOF
+# 核心功能与系统模块
+CONFIG_PACKAGE_kmod-button-hotplug=y            # 支持物理按钮热插拔（如 Reset/Wi-Fi）
+CONFIG_PACKAGE_kmod-gpio-button-hotplug=y       # GPIO 按键热插拔支持
+CONFIG_PACKAGE_kmod-hwmon-core=y                # 硬件监控基础模块（温度、风扇）
+CONFIG_PACKAGE_kmod-input-core=y                # 输入设备支持（键盘、鼠标等）
+CONFIG_PACKAGE_kmod-lib-crc16=y                 # CRC16 校验库，内核常用
+CONFIG_PACKAGE_kmod-lib-crc32c=y                # CRC32C 校验库
+CONFIG_PACKAGE_kmod-lib-lzo=y                   # LZO 压缩算法支持
+CONFIG_PACKAGE_kmod-lib-textsearch=y            # 文本搜索支持，常用于 netfilter
+CONFIG_PACKAGE_kmod-lib-xor=y                   # XOR 操作库（RAID）
+CONFIG_PACKAGE_kmod-lib-zlib-deflate=y          # zlib deflate 压缩算法支持
+CONFIG_PACKAGE_kmod-lib-zlib-inflate=y          # zlib inflate 解压算法支持
+CONFIG_PACKAGE_kmod-lib-zstd=y                  # Zstandard 压缩算法支持
+CONFIG_PACKAGE_kmod-lib-raid6=y                 # RAID6 编码支持模块
+CONFIG_PACKAGE_kmod-mii=y                       # 网络接口中 MII 接口支持
+CONFIG_PACKAGE_kmod-veth=y                      # 虚拟以太网对接口（veth）
+
+# 文件系统支持
+CONFIG_PACKAGE_kmod-fs-ext4=y                   # 支持 EXT4 文件系统
+CONFIG_PACKAGE_kmod-fs-btrfs=y                  # 支持 Btrfs 文件系统
+CONFIG_PACKAGE_kmod-fs-exfat=y                  # 支持 exFAT 文件系统
+CONFIG_PACKAGE_kmod-fs-xfs=y                    # 支持 XFS 文件系统
+CONFIG_PACKAGE_kmod-fs-vfat=y                   # 支持 FAT32/VFAT 文件系统
+CONFIG_PACKAGE_kmod-fs-ntfs3=y                  # 支持 NTFS3 文件系统（比 ntfs-3g 快）
+CONFIG_PACKAGE_kmod-fs-exportfs=y               # NFS 导出支持
+CONFIG_PACKAGE_kmod-fs-autofs4=y                # 自动挂载支持（自动文件系统）
+CONFIG_PACKAGE_kmod-fuse=y                      # FUSE 文件系统用户空间挂载支持
+
+# 加密与安全模块
+CONFIG_PACKAGE_kmod-crypto-acompress=y          # 压缩相关加密模块
+CONFIG_PACKAGE_kmod-crypto-aead=y               # AEAD 加密算法支持
+CONFIG_PACKAGE_kmod-crypto-authenc=y            # Authenticated encryption 支持
+CONFIG_PACKAGE_kmod-crypto-cbc=y                # CBC 模式支持
+CONFIG_PACKAGE_kmod-crypto-ccm=y                # CCM 模式支持
+CONFIG_PACKAGE_kmod-crypto-cmac=y               # CMAC 支持
+CONFIG_PACKAGE_kmod-crypto-crc32c=y             # CRC32C 校验支持
+CONFIG_PACKAGE_kmod-crypto-ctr=y                # CTR 模式加密支持
+CONFIG_PACKAGE_kmod-crypto-deflate=y            # DEFLATE 压缩算法（加密中用）
+CONFIG_PACKAGE_kmod-crypto-des=y                # DES 加密算法支持
+CONFIG_PACKAGE_kmod-crypto-ecb=y                # ECB 模式支持
+CONFIG_PACKAGE_kmod-crypto-echainiv=y           # 加密链支持
+CONFIG_PACKAGE_kmod-crypto-gcm=y                # GCM 加密模式
+CONFIG_PACKAGE_kmod-crypto-gf128=y              # GF128 乘法支持（GCM 用）
+CONFIG_PACKAGE_kmod-crypto-ghash=y              # GHASH 支持
+CONFIG_PACKAGE_kmod-crypto-hash=y               # 通用哈希接口
+CONFIG_PACKAGE_kmod-crypto-hmac=y               # HMAC 支持
+CONFIG_PACKAGE_kmod-crypto-kpp=y                # 密钥派生协议支持
+CONFIG_PACKAGE_kmod-crypto-md5=y                # MD5 支持
+CONFIG_PACKAGE_kmod-crypto-null=y               # 空加密（测试用）
+CONFIG_PACKAGE_kmod-crypto-rng=y                # 随机数生成器支持
+CONFIG_PACKAGE_kmod-crypto-seqiv=y              # IV 生成支持
+CONFIG_PACKAGE_kmod-crypto-sha1=y               # SHA1 哈希支持
+CONFIG_PACKAGE_kmod-crypto-sha256=y             # SHA256 哈希支持
+CONFIG_PACKAGE_kmod-crypto-user=y               # 用户空间加密 API
+CONFIG_PACKAGE_kmod-cryptodev=y                 # 使用 cryptodev 设备进行加密加速
+
+# 网络协议与 NAT/防火墙
+CONFIG_PACKAGE_kmod-br-netfilter=y              # 桥接网卡的 netfilter 支持
+CONFIG_PACKAGE_kmod-ipt-core=y                  # iptables 核心支持
+CONFIG_PACKAGE_kmod-ipt-conntrack=y             # iptables 连接跟踪模块
+CONFIG_PACKAGE_kmod-ipt-conntrack-extra=y       # 连接跟踪扩展支持
+CONFIG_PACKAGE_kmod-ipt-extra=y                 # iptables 额外扩展
+CONFIG_PACKAGE_kmod-ipt-nat=y                   # IPv4 NAT 支持
+CONFIG_PACKAGE_kmod-ipt-nat6=y                  # IPv6 NAT 支持
+CONFIG_PACKAGE_kmod-ipt-ipset=y                 # 支持 IP 集合（ipset）
+CONFIG_PACKAGE_kmod-ipt-tproxy=y                # 透明代理支持（TPROXY）
+CONFIG_PACKAGE_kmod-ipt-ipopt=y                 # IP 选项支持
+CONFIG_PACKAGE_kmod-ipt-iprange=y               # IP 范围匹配支持
+CONFIG_PACKAGE_kmod-ipt-ipsec=y                 # IPsec 匹配支持
+CONFIG_PACKAGE_kmod-ipt-offload=y               # 硬件 offload 支持
+CONFIG_PACKAGE_kmod-ipt-physdev=y               # 物理设备匹配
+CONFIG_PACKAGE_kmod-ipt-raw=y                   # 原始数据包处理
+CONFIG_PACKAGE_kmod-ipt-fullconenat=y           # FullCone NAT 支持
+
+# 网络协议与隧道
+CONFIG_PACKAGE_kmod-ip6tables=y                 # IPv6 的 iptables 支持
+CONFIG_PACKAGE_kmod-iptunnel=y                  # IP 隧道支持
+CONFIG_PACKAGE_kmod-iptunnel4=y                 # IPv4 隧道支持
+CONFIG_PACKAGE_kmod-iptunnel6=y                 # IPv6 隧道支持
+CONFIG_PACKAGE_kmod-sit=y                       # IPv6 over IPv4 隧道（SIT）
+CONFIG_PACKAGE_kmod-gre=y                       # GRE 隧道协议支持
+CONFIG_PACKAGE_kmod-l2tp=y                      # L2TP 协议支持
+CONFIG_PACKAGE_kmod-udptunnel4=y                # UDP over IPv4 隧道支持
+CONFIG_PACKAGE_kmod-udptunnel6=y                # UDP over IPv6 隧道支持
+
+# 路由加速 / QoS / 调度
+CONFIG_PACKAGE_kmod-sched=y                     # 通用流量调度支持
+CONFIG_PACKAGE_kmod-sched-core=y                # 核心调度功能支持
+CONFIG_PACKAGE_kmod-sched-cake=y                # CAKE 流控算法支持（推荐）
+CONFIG_PACKAGE_kmod-nf-flow=y                   # 流表加速支持（flow offload）
+CONFIG_PACKAGE_kmod-nf-ipt=y                    # IPv4 netfilter 支持
+CONFIG_PACKAGE_kmod-nf-ipt6=y                   # IPv6 netfilter 支持
+CONFIG_PACKAGE_kmod-nf-reject=y                 # 拒绝响应模块（IPv4）
+CONFIG_PACKAGE_kmod-nf-reject6=y                # 拒绝响应模块（IPv6）
+CONFIG_PACKAGE_kmod-nf-nat=y                    # IPv4 NAT 模块
+CONFIG_PACKAGE_kmod-nf-nat6=y                   # IPv6 NAT 模块
+CONFIG_PACKAGE_kmod-nf-nathelper=y              # NAT 辅助模块
+CONFIG_PACKAGE_kmod-nf-nathelper-extra=y        # NAT 辅助额外模块
+CONFIG_PACKAGE_kmod-nfnetlink=y                 # netfilter 与用户空间通信支持
+CONFIG_PACKAGE_kmod-nfnetlink-queue=y           # netfilter 队列支持
+CONFIG_PACKAGE_kmod-nf-conntrack=y              # 连接跟踪支持
+CONFIG_PACKAGE_kmod-nf-conntrack6=y             # IPv6 连接跟踪支持
+CONFIG_PACKAGE_kmod-nf-conntrack-netlink=y      # 连接跟踪 netlink 接口
+
+# 无线驱动与相关模块
+CONFIG_PACKAGE_kmod-cfg80211=y                  # Linux 无线配置框架支持
+CONFIG_PACKAGE_kmod-mac80211=y                  # 主流 Wi-Fi 驱动框架
+CONFIG_PACKAGE_kmod-macvlan=y                   # MAC VLAN 支持
+CONFIG_PACKAGE_kmod-mt76-core=y                 # MT76 无线核心驱动
+CONFIG_PACKAGE_kmod-mt76-connac=y               # MT76 connac 系列无线芯片驱动
+CONFIG_PACKAGE_kmod-mt7615-common=y             # MT7615 通用驱动
+CONFIG_PACKAGE_kmod-mt7615e=y                   # MT7615e 无线芯片驱动
+CONFIG_PACKAGE_kmod-mt7915-firmware=y           # MT7915 固件支持
+CONFIG_PACKAGE_kmod-mt7915e=y                   # MT7915e 无线芯片驱动
+CONFIG_PACKAGE_kmod-mt7916-firmware=y           # MT7916 固件支持
+CONFIG_PACKAGE_kmod-mt7921-common=y             # MT7921 通用驱动
+CONFIG_PACKAGE_kmod-mt7921-firmware=y           # MT7921 固件支持
+CONFIG_PACKAGE_kmod-mt7921e=y                   # MT7921e 无线芯片驱动
+CONFIG_PACKAGE_kmod-mt7922-firmware=y           # MT7922 固件支持
+CONFIG_PACKAGE_kmod-mt792x-common=y             # MT792x 通用驱动
+CONFIG_PACKAGE_kmod-rtl8821cu=y                 # RTL8821CU 无线驱动（USB）
+CONFIG_PACKAGE_kmod-rtl8822cu=y                 # RTL8822CU 无线驱动（USB）
+CONFIG_PACKAGE_kmod-rtw88-usb=y                 # rtw88 USB 系列无线驱动
+CONFIG_PACKAGE_kmod-mt76x2u=y                   # USB网卡
+CONFIG_PACKAGE_kmod-mt76=y                      # USB网卡
+
+# USB 支持及相关驱动
+CONFIG_PACKAGE_kmod-usb-core=y                  # USB 核心支持
+CONFIG_PACKAGE_kmod-usb-uhci=y                  # USB UHCI 控制器支持
+CONFIG_PACKAGE_kmod-usb-ohci=y                  # USB OHCI 控制器支持
+CONFIG_PACKAGE_kmod-usb-ehci=y                  # USB EHCI 控制器支持
+CONFIG_PACKAGE_kmod-usb2=y                      # USB 2.0 支持
+CONFIG_PACKAGE_kmod-usb-storage=y               # USB 存储支持
+CONFIG_PACKAGE_kmod-usb-storage-extras=y        # USB 存储扩展支持（多种文件系统）
+CONFIG_PACKAGE_kmod-usb-storage-uas=y           # USB UAS 协议支持
+CONFIG_PACKAGE_kmod-usb-net=y                   # 通用 USB 网络支持
+CONFIG_PACKAGE_kmod-usb-net-aqc111=y            # Aquantia USB 网卡驱动
+CONFIG_PACKAGE_kmod-usb-net-asix-ax88179=y      # ASIX AX88179 USB 以太网驱动
+CONFIG_PACKAGE_kmod-usb-net-cdc-ether=y         # CDC Ethernet USB 网卡驱动
+CONFIG_PACKAGE_kmod-usb-net-cdc-ncm=y           # CDC NCM (Network Control Model) 支持
+CONFIG_PACKAGE_kmod-usb-net-huawei-cdc-ncm=y    # 华为专用 CDC NCM 支持
+CONFIG_PACKAGE_kmod-usb-net-ipheth=y            # Apple iPhone USB 网络驱动
+CONFIG_PACKAGE_kmod-usb-net-qmi-wwan=y          # QMI WWAN 网络支持
+CONFIG_PACKAGE_kmod-usb-net-rndis=y             # RNDIS 协议 USB 网卡支持
+CONFIG_PACKAGE_kmod-usb-net-rtl8152-vendor=y    # Realtek 8152 USB 网卡驱动（厂商版本）
+CONFIG_PACKAGE_kmod-usb-net-sierrawireless=y    # Sierra Wireless USB 网卡支持
+CONFIG_PACKAGE_kmod-usb-serial=y                # 通用 USB 串口驱动
+CONFIG_PACKAGE_kmod-usb-serial-option=y         # USB 串口选项驱动
+CONFIG_PACKAGE_kmod-usb-serial-qualcomm=y       # Qualcomm USB 串口支持
+CONFIG_PACKAGE_kmod-usb-serial-wwan=y           # WWAN USB 串口驱动
+CONFIG_PACKAGE_kmod-usb-wdm=y                   # USB WDM 设备支持
+CONFIG_PACKAGE_kmod-usb-acm=y                   # USB ACM 通用串口支持
+CONFIG_PACKAGE_kmod-usb-printer=y               # USB 打印机支持
+
+# PPP 与 WAN 连接支持
+CONFIG_PACKAGE_kmod-ppp=y                        # PPP 协议核心模块
+CONFIG_PACKAGE_kmod-pppoe=y                      # PPPoE 支持（常用于 DSL 宽带）
+CONFIG_PACKAGE_kmod-pppol2tp=y                   # L2TP over PPP 支持
+CONFIG_PACKAGE_kmod-pppox=y                      # PPP over Ethernet/PPPoE 支持
+
+# 存储与磁盘相关
+CONFIG_PACKAGE_kmod-dm=y                         # 设备映射器支持（LVM、RAID 等）
+CONFIG_PACKAGE_kmod-dax=y                        # 直接访问存储支持（DAX）
+CONFIG_PACKAGE_kmod-nvme=y                       # NVMe 存储支持
+CONFIG_PACKAGE_kmod-scsi-core=y                  # SCSI 核心支持
+
+# 其他常用驱动及模块
+CONFIG_PACKAGE_kmod-bonding=y                   # 绑定多个网口（链路聚合）
+CONFIG_PACKAGE_kmod-keys-encrypted=y            # 加密密钥支持
+CONFIG_PACKAGE_kmod-keys-trusted=y              # 可信密钥支持
+CONFIG_PACKAGE_kmod-thermal=y                   # 温度传感器支持
+CONFIG_PACKAGE_kmod-tpm=y                       # TPM 硬件安全模块支持
+CONFIG_PACKAGE_kmod-random-core=y               # 随机数核心模块
+CONFIG_PACKAGE_kmod-ifb=y                       # Intermediate Functional Block，流量镜像
+CONFIG_PACKAGE_kmod-ikconfig=y                  # 内核配置导出支持
+CONFIG_PACKAGE_kmod-netem=y                     # 网络仿真模块（延迟、丢包等）
+CONFIG_PACKAGE_kmod-nls-base=y                  # 字符集支持基础
+CONFIG_PACKAGE_kmod-nls-cp437=y                 # CP437 编码支持
+CONFIG_PACKAGE_kmod-nls-iso8859-1=y             # ISO8859-1 字符集支持
+CONFIG_PACKAGE_kmod-nls-utf8=y                  # UTF8 字符集支持
+
+# 特殊网卡驱动
+CONFIG_PACKAGE_kmod-r8125=y                     # Realtek 8125 网卡驱动
+CONFIG_PACKAGE_kmod-r8168=y                     # Realtek 8168 网卡驱动
 EOF
 
 # 其他软件包:
