@@ -1,0 +1,33 @@
+
+config system
+	option ttylogin '0'
+	option log_size '64'
+	option urandom_seed '0'
+	option timezone 'CST-8'
+	option zonename 'Asia/Shanghai'
+	option hostname 'OpenWrt'
+
+config timeserver 'ntp'
+	option enabled '1'
+	option enable_server '1'
+	list server 'ntp1.aliyun.com'
+	list server 'ntp.tencent.com'
+	list server 'ntp.ntsc.ac.cn'
+	list server 'time.apple.com'
+
+config led 'led_wan'
+	option name 'WAN'
+	option trigger 'netdev'
+	option mode 'link tx rx'
+	option sysfs 'green:wan'
+	option default '1'
+	option dev 'eth0'
+
+config led 'led_lan'
+	option name 'LAN'
+	option trigger 'netdev'
+	option mode 'link tx rx'
+	option default '1'
+	option sysfs 'green:lan'
+	option dev 'eth1'
+
