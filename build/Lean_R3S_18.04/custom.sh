@@ -277,10 +277,10 @@ CONFIG_PACKAGE_luci-app-wireguard=y                 # WireGuard 客户端
 CONFIG_PACKAGE_luci-proto-wireguard=y               # WireGuard 协议支持
 CONFIG_PACKAGE_luci-app-store=y                     # Store 应用商店
 CONFIG_PACKAGE_luci-app-uhttpd=y                    # uhttpd 管理界面
-CONFIG_PACKAGE_luci-app-nlbwmon=y                   # 宽带流量统计
 CONFIG_PACKAGE_luci-app-wol=y                       # 网络唤醒
 CONFIG_PACKAGE_luci-app-cpufreq=y                   # cpufreq
 
+CONFIG_PACKAGE_luci-app-nlbwmon=n                   # 宽带流量统计
 CONFIG_PACKAGE_luci-app-dockerman=n                 # Docker 管理
 CONFIG_PACKAGE_luci-app-tailscale=n                 # tailscale VPN
 CONFIG_PACKAGE_luci-app-gowebdav=n                  # GoWebDAV 文件访问
