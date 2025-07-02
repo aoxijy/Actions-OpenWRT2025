@@ -9,6 +9,7 @@ on:
         type: choice
         default: Lean_x86_64_18.04
         options:
+          - Lean_R3S_18.04
           - Lean_x86_64_18.04
           - Lean_x86_64_24.01
           - Lean_Cudy_18.04
@@ -28,7 +29,7 @@ on:
 
   # 定时触发编译(北京时间：每天早1点)
   schedule:
-    - cron: 0 4 * * *
+    - cron: 30 2 * * *
 
 run-name: >-
   ${{ github.event_name == 'workflow_dispatch'
