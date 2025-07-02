@@ -27,14 +27,7 @@ on:
         default: false
         type: boolean
 
-  # 定时触发编译(北京时间：每天早1点)
-  #  schedule:
-  #    - cron: 0 17 * * *
-
-run-name: >-
-  ${{ github.event_name == 'workflow_dispatch'
-      && format('编译 {0} 固件（测试）', inputs.MODEL)
-      || 'OpenWrt 固件编译' }}
+run-name: ${{ format('编译 {0} 固件（测试）', inputs.MODEL) }}
 
 env:
   TZ: Asia/Shanghai
@@ -422,17 +415,6 @@ jobs:
         with:
           name: ${{matrix.target}}_OpenWrt_buildinfo_${{ env.FILE_TIME }}
           path: ./artifact/buildinfo/
-
-      - name: 编译成功信息通知-企业微信
-        if: steps.compile.outcome == 'success' && env.WECHAT_WORK_PUSH == 'true'
-        run: |
-          curl "http://${{ secrets.WECHAT_WORK_URL }}/push?token=${{ secrets.WECHAT_WORK_TOKEN }}&message=\
-          您的${{ env.FIRMWARE_MESSAGE }}固件成功编译完成了！%0a%0a\
-          🎈编译时间：${{ env.FILE_TIME1 }}%0a%0a\
-          🖥内核版本：${{ env.KERNEL_PATCHVER }}%0a%0a\
-          ⏰编译用时：${{ env.BUILD_TIME }}%0a%0a\
-          🎉发布地址：${{ env.GITHUB_RELEASE }}%0a%0a\
-          🌴固件已经编译完成🎈！！！" || true
 
       - name: 编译成功信息通知-Telegram
         if: steps.compile.outcome == 'success' && env.TELEGRAM_BOT == 'true'
