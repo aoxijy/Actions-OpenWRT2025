@@ -1,4 +1,4 @@
-name: 编译 OpenWrt 固件
+name: OpenWrt Build
 
 on:
   workflow_dispatch:
@@ -34,7 +34,7 @@ on:
 run-name: >-
   ${{ github.event_name == 'workflow_dispatch'
       && format('编译 {0} 固件', inputs.MODEL)
-      || 'OpenWrt 固件自动编译' }}
+      || '自动编译 OpenWrt 固件' }}
 
 env:
   TZ: Asia/Shanghai
