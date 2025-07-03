@@ -31,6 +31,12 @@ uci set luci.main.mediaurlbase='/luci-static/argon' && uci commit luci
 #echo " (CpuMark : 191219.823122" >> /etc/bench.log
 #echo " Scores)" >> /etc/bench.log
 
+#samba可以root登录，并添加root用户
+(echo zybin980329; echo zybin980329) | smbpasswd -s -a root
+sed -i '/^[[:space:]]*invalid[[:space:]]*users[[:space:]]*=[[:space:]]*root/s/^/# /' /etc/samba/smb.conf
+/etc/init.d/samba4 restart
+
+
 # 添加系统信息
 grep "shell-motd" /etc/profile >/dev/null
 if [ $? -eq 1 ]; then
