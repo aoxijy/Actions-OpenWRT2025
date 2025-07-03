@@ -29,7 +29,7 @@ on:
 
   # 定时触发编译(北京时间：每天早1点)
   schedule:
-    - cron: 0 17 * * *
+    - cron: 30 16 * * *
 
 run-name: >-
   ${{ github.event_name == 'workflow_dispatch'
