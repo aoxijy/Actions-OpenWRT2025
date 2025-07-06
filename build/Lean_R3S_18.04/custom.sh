@@ -1,14 +1,5 @@
 #!/bin/bash
 
-# 创建符号链接
-sudo mkdir -p staging_dir/host/include/uuid
-sudo ln -sf /usr/include/uuid/uuid.h "$(pwd)/staging_dir/host/include/uuid/"
-if [ -L "$(pwd)/staging_dir/host/include/uuid/uuid.h" ]; then
-  echo "✅ 符号链接创建成功: uuid.h"
-else
-  echo "❌ 符号链接创建失败"
-  exit 1
-fi
 
 
 # 启用18.06Luci
@@ -34,6 +25,18 @@ echo "📥 安装所有 feeds（强制覆盖冲突项）..."
 echo "📥 再次安装所有 feeds（确保完整）..."
 ./scripts/feeds install -a -f
 echo "✅ feeds 更新与安装完成"
+
+
+# 创建符号链接
+sudo mkdir -p staging_dir/host/include/uuid
+sudo ln -sf /usr/include/uuid/uuid.h "$(pwd)/staging_dir/host/include/uuid/"
+if [ -L "$(pwd)/staging_dir/host/include/uuid/uuid.h" ]; then
+  echo "✅ 符号链接创建成功: uuid.h"
+else
+  echo "❌ 符号链接创建失败"
+  exit 1
+fi
+
 
 # 删除部分默认包
 echo "🧹 删除部分默认包"
