@@ -33,7 +33,6 @@ uci set luci.main.mediaurlbase='/luci-static/argon' && uci commit luci
 
 #samba可以root登录，并添加root用户
 (echo zybin980329; echo zybin980329) | smbpasswd -s -a root
-sed -i '/^[[:space:]]*invalid[[:space:]]*users[[:space:]]*=[[:space:]]*root/s/^/# /' /etc/samba/smb.conf
 /etc/init.d/samba4 restart
 
 
