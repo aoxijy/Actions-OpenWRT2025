@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # 安装额外依赖软件包
-# sudo -E apt-get -y install uuid-dev libuuid1
+sudo -E apt-get -y install uuid-dev libuuid1
 
 # 启用18.06Luci
 sed -i 's|^#src-git luci https://github.com/coolsnowwolf/luci$|src-git luci https://github.com/coolsnowwolf/luci|' feeds.conf.default
